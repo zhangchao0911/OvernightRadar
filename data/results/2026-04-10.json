@@ -1,7 +1,74 @@
 {
   "date": "2026-04-10",
   "weekday": "周五",
-  "cards": [],
-  "quiet_sectors": [],
-  "updated_at": "2026-04-11T16:23:12+08:00"
+  "cards": [
+    {
+      "us_name": "半导体",
+      "us_etf": "SOXX",
+      "us_change_pct": 2.1,
+      "cn_name": "半导体",
+      "cn_etf_name": "半导体ETF",
+      "cn_etf_code": "512480",
+      "is_significant": true,
+      "prob_high_open": 0.38,
+      "avg_impact": -0.13,
+      "sample_count": 21,
+      "window_days": 60
+    }
+  ],
+  "quiet_sectors": [
+    {
+      "us_name": "科技",
+      "us_etf": "XLK",
+      "us_change_pct": 0.39,
+      "cn_name": "电子",
+      "cn_etf_name": "科技ETF",
+      "cn_etf_code": "515000",
+      "is_significant": false,
+      "prob_high_open": 0.18,
+      "avg_impact": -0.84,
+      "sample_count": 11,
+      "window_days": 60
+    },
+    {
+      "us_name": "新能源车",
+      "us_etf": "DRIV",
+      "us_change_pct": 1.04,
+      "cn_name": "汽车",
+      "cn_etf_name": "新能源车ETF",
+      "cn_etf_code": "515030",
+      "is_significant": false,
+      "prob_high_open": 0.36,
+      "avg_impact": -0.17,
+      "sample_count": 14,
+      "window_days": 60
+    },
+    {
+      "us_name": "AI/算力",
+      "us_etf": "THNQ",
+      "us_change_pct": 0.08,
+      "cn_name": "计算机",
+      "cn_etf_name": "计算机ETF",
+      "cn_etf_code": "512720",
+      "is_significant": false,
+      "prob_high_open": 0.38,
+      "avg_impact": -0.34,
+      "sample_count": 21,
+      "window_days": 60
+    },
+    {
+      "us_name": "黄金",
+      "us_etf": "GLD",
+      "us_change_pct": -0.18,
+      "cn_name": "有色金属",
+      "cn_etf_name": "黄金ETF",
+      "cn_etf_code": "518880",
+      "is_significant": false,
+      "prob_high_open": 0.65,
+      "avg_impact": 0.13,
+      "sample_count": 23,
+      "window_days": 60
+    }
+  ],
+  "updated_at": "2026-04-11T16:25:20+08:00"
 }
