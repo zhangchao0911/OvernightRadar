@@ -2,7 +2,7 @@
  * 美股涨了，A股呢？ — 前端逻辑
  */
 
-const RESULTS_DIR = '/data/results/';
+const RESULTS_DIR = import.meta.env.BASE_URL + 'data/results/';
 
 async function main() {
   const app = document.getElementById('app');

@@ -8,6 +8,7 @@ const dataDir = path.resolve(__dirname, '../data');
 
 export default defineConfig({
   root: '.',
+  base: '/US-CN-Sector-Mapper/',
   build: {
     outDir: 'dist',
   },
