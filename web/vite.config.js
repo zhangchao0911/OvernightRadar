@@ -1,5 +1,10 @@
 import { defineConfig } from 'vite';
 import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const dataDir = path.resolve(__dirname, '../data');
 
 export default defineConfig({
   root: '.',
@@ -8,11 +13,25 @@ export default defineConfig({
   },
   server: {
     open: true,
-    proxy: {
-      '/data': {
-        target: 'http://localhost:5173',
-        rewrite: (path) => path.replace('/data', '../data'),
+  },
+  plugins: [
+    {
+      name: 'serve-data',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url && req.url.startsWith('/data/')) {
+            const relativePath = req.url.replace('/data/', '');
+            const filePath = path.join(dataDir, relativePath);
+            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+              res.setHeader('Content-Type', 'application/json');
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              fs.createReadStream(filePath).pipe(res);
+              return;
+            }
+          }
+          next();
+        });
       },
     },
-  },
+  ],
 });
