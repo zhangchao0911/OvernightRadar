@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>美股涨了，A股呢？</title>
+  <script type="module" crossorigin src="/assets/index-DMVL7WMI.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-H4mbx8-h.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">美股涨了，A股呢？</h1>
+      <p class="subtitle">每日开盘前 · 数据参考</p>
+      <p class="date" id="report-date"></p>
+    </header>
+
+    <main id="cards-container"></main>
+
+    <section id="quiet-section" class="quiet-section" style="display:none">
+      <h2 class="section-title">今日无显著波动</h2>
+      <div id="quiet-list"></div>
+    </section>
+
+    <footer class="disclaimer">
+      <p class="disclaimer-title">⚠️ 免责声明</p>
+      <p>本工具仅供数据参考，不构成任何投资建议或投资指导。</p>
+      <p>统计数据基于历史表现，不代表未来走势。</p>
+      <p>数据来源：Yahoo Finance、公开市场数据。</p>
+      <p>股市有风险，投资需谨慎。</p>
+    </footer>
+  </div>
+
+  <div id="loading" class="loading">
+    <p>正在加载今日数据...</p>
+  </div>
+
+  <div id="error" class="error" style="display:none">
+    <p>数据加载失败，请稍后重试。</p>
+  </div>
+
+</body>
+</html>
