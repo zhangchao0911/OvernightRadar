@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+
+# Node
+web/node_modules/
+web/dist/
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Data (keep structure, ignore content except .gitkeep)
+data/results/*.json
+!data/results/.gitkeep
