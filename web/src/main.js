@@ -1,8 +1,16 @@
 /**
- * 美股涨了，A股呢？ — 前端逻辑
+ * 隔夜雷达 — 前端逻辑 V1.1
  */
 
 const RESULTS_DIR = import.meta.env.BASE_URL + 'data/results/';
+
+const SENTIMENT_CONFIG = {
+  4: { label: '🔴 强烈看多', cssClass: 'sentiment-label-4' },
+  3: { label: '🔴 偏多', cssClass: 'sentiment-label-3' },
+  2: { label: '⚪ 中性', cssClass: 'sentiment-label-2' },
+  1: { label: '🟢 偏空', cssClass: 'sentiment-label-1' },
+  0: { label: '🟢 强烈看空', cssClass: 'sentiment-label-0' },
+};
 
 async function main() {
   const app = document.getElementById('app');
@@ -56,67 +64,90 @@ function formatDate(date) {
   return `${y}-${m}-${d}`;
 }
 
+function formatChange(value) {
+  if (value === null || value === undefined) return '—';
+  const sign = value >= 0 ? '+' : '';
+  return `${sign}${value.toFixed(1)}%`;
+}
+
 function renderReport(report) {
+  // ─── 市场指数 ─────────────────────────────
+  const indicesEl = document.getElementById('market-indices');
+  const indexNames = { sp500: '标普', nasdaq: '纳指', dow: '道指' };
+  let indicesHtml = '';
+  for (const [key, name] of Object.entries(indexNames)) {
+    if (report.market_indices && report.market_indices[key]) {
+      const change = report.market_indices[key].change_pct;
+      const cls = change >= 0 ? 'up' : 'down';
+      indicesHtml += `<span class="index-item">${name}<span class="${cls}">${formatChange(change)}</span></span>`;
+    }
+  }
+  indicesEl.innerHTML = indicesHtml;
+
+  // ─── 日期 + 总览 ──────────────────────────
   document.getElementById('report-date').textContent =
-    `${report.date} ${report.weekday}`;
+    `${report.market_summary} · ${report.date} ${report.weekday}`;
 
+  // ─── 板块卡片 ─────────────────────────────
   const container = document.getElementById('cards-container');
-  if (report.cards.length === 0) {
-    container.innerHTML = '<p class="empty-msg">今日美股无板块涨跌幅超过 2%</p>';
+  if (!report.sectors || report.sectors.length === 0) {
+    container.innerHTML = '<p style="text-align:center;color:#888;padding:40px 0;">暂无板块数据</p>';
   } else {
-    container.innerHTML = report.cards.map(renderCard).join('');
-  }
-
-  const quietSection = document.getElementById('quiet-section');
-  if (report.quiet_sectors.length > 0) {
-    quietSection.style.display = 'block';
-    document.getElementById('quiet-list').innerHTML =
-      report.quiet_sectors.map(renderQuietItem).join('');
+    container.innerHTML = report.sectors.map(renderSectorCard).join('');
   }
 }
 
-function renderCard(card) {
-  const isUp = card.us_change_pct >= 0;
-  const changeClass = isUp ? 'up' : 'down';
-  const changeSign = isUp ? '+' : '';
-  const changeStr = `${changeSign}${card.us_change_pct.toFixed(2)}%`;
+function renderSectorCard(sector) {
+  const changeClass = sector.us_change_pct >= 0 ? 'up' : 'down';
+  const s = SENTIMENT_CONFIG[sector.sentiment_level] || SENTIMENT_CONFIG[2];
 
-  let probHtml = '';
-  if (card.prob_high_open !== null && card.prob_high_open !== undefined) {
-    const probPct = (card.prob_high_open * 100).toFixed(0);
-    const impactSign = card.avg_impact >= 0 ? '+' : '';
-    const impactStr = `${impactSign}${card.avg_impact.toFixed(2)}%`;
-    probHtml = `
-      <div class="card-prob">${probPct}% <span>概率高开</span></div>
-      <div class="card-impact">平均幅度 ${impactStr}</div>
-    `;
-  } else {
-    probHtml = '<div class="card-prob" style="font-size:14px;color:#aaa">样本不足</div>';
+  // 相对强度文案
+  const rsText = sector.relative_strength >= 0 ? '跑赢大盘' : '跑输大盘';
+  const rsSign = sector.relative_strength >= 0 ? '+' : '';
+
+  // 波动率文案
+  const volText = sector.volatility.is_abnormal
+    ? `异常波动 ${sector.volatility.vol_multiple}σ`
+    : '正常波动';
+
+  // 趋势文案
+  let trendText = '平盘';
+  if (sector.trend.direction === 'up' && sector.trend.consecutive_days > 0) {
+    trendText = `连涨${sector.trend.consecutive_days}天+${sector.trend.cumulative_pct}%`;
+  } else if (sector.trend.direction === 'down' && sector.trend.consecutive_days > 0) {
+    trendText = `连跌${sector.trend.consecutive_days}天${sector.trend.cumulative_pct}%`;
+  }
+
+  // 产业链标的
+  const stocksHtml = sector.supply_chain.map(stock => {
+    const sc = stock.change_pct !== null && stock.change_pct !== undefined
+      ? (stock.change_pct >= 0 ? 'up' : 'down')
+      : 'na';
+    return `<div class="stock-item">
+      <span class="stock-name">${stock.name}(${stock.code})</span>
+      <span class="stock-change ${sc}">${formatChange(stock.change_pct)}</span>
+    </div>`;
+  }).join('');
+
+  // A股 ETF 标签（cn_etf_code 为空则不显示）
+  let etfHtml = '';
+  if (sector.cn_etf_code) {
+    etfHtml = `<span class="card-cn-etf">${sector.cn_etf_name}(${sector.cn_etf_code})</span>`;
   }
 
   return `
-    <div class="card">
+    <div class="card sentiment-${sector.sentiment_level}">
+      <div class="card-sentiment ${s.cssClass}">${s.label}</div>
       <div class="card-header">
-        <span class="card-us">${card.us_etf} ${card.us_name}</span>
-        <span class="card-change ${changeClass}">${changeStr}</span>
+        <span class="card-us">${sector.us_etf} ${sector.us_name}</span>
+        <span class="card-change ${changeClass}">${formatChange(sector.us_change_pct)}</span>
       </div>
-      <div class="card-arrow">↓</div>
-      <div class="card-cn">→ A股 ${card.cn_name}</div>
-      ${probHtml}
-      <span class="card-etf">${card.cn_etf_name}(${card.cn_etf_code})</span>
-      ${card.sample_count > 0 ? `<div class="card-meta">(${card.window_days}日 · ${card.sample_count}次样本)</div>` : ''}
-    </div>
-  `;
-}
-
-function renderQuietItem(item) {
-  const isUp = item.us_change_pct >= 0;
-  const changeClass = isUp ? 'up' : 'down';
-  const changeSign = isUp ? '+' : '';
-  return `
-    <div class="quiet-item">
-      <span>${item.us_name} (${item.us_etf})</span>
-      <span class="quiet-change ${changeClass}">${changeSign}${item.us_change_pct.toFixed(2)}%</span>
+      <div class="card-detail">
+        <span class="card-rs">${rsText}${rsSign}${sector.relative_strength.toFixed(1)}%</span>
+      </div>
+      <div class="card-detail">${volText} · ${trendText}</div>
+      <div class="card-cn">→ A股${sector.cn_name} ${etfHtml}</div>
+      <div class="card-stocks">${stocksHtml}</div>
     </div>
   `;
 }
