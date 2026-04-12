@@ -26,11 +26,14 @@ jobs:
       - name: Run daily script
         run: python scripts/run_daily.py
 
+      - name: Run watchlist data fetch
+        run: python scripts/fetch_watchlist.py
+
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/results/
+          git add data/results/ data/watchlist/
           git diff --staged --quiet || git commit -m "data: daily update $(date +%Y-%m-%d)"
           git push
 

@@ -28,4 +28,6 @@ tests/
 # Data (keep structure, ignore content except .gitkeep)
 data/results/*.json
 !data/results/.gitkeep
+data/watchlist/*.json
+!data/watchlist/.gitkeep
 skills-lock.json
