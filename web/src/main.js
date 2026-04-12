@@ -67,7 +67,7 @@ function formatDate(date) {
 function formatChange(value) {
   if (value === null || value === undefined) return '—';
   const sign = value >= 0 ? '+' : '';
-  return `${sign}${value.toFixed(1)}%`;
+  return `${sign}${value.toFixed(2)}%`;
 }
 
 function renderReport(report) {

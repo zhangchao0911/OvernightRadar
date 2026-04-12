@@ -419,8 +419,10 @@ def run_daily(output_dir: str = "data/results"):
     V1.1 主入口：采集数据 → 计算新指标 → 输出 JSON。
     返回生成的报告 dict，失败返回 None。
     """
-    # ─── 1. 拉取美股数据（8 板块 ETF + SPY/QQQ/DIA） ─────────
-    tickers = [s["us_etf"] for s in SECTOR_MAP] + ["SPY", "QQQ", "DIA"]
+    # ─── 1. 拉取美股数据（8 板块 ETF + 三大指数） ─────────────
+    # 使用真实指数代码，而非 ETF（QQQ 追踪 Nasdaq-100，非 Nasdaq Composite）
+    index_tickers = {"^GSPC": "sp500", "^IXIC": "nasdaq", "^DJI": "dow"}
+    tickers = [s["us_etf"] for s in SECTOR_MAP] + list(index_tickers.keys())
 
     print("Fetching US data...")
     us_data = fetch_us_data(tickers)
@@ -440,7 +442,7 @@ def run_daily(output_dir: str = "data/results"):
 
     # ─── 2. 提取市场指数涨跌幅 ─────────────────────────────
     market_indices = {}
-    index_map = {"SPY": "sp500", "QQQ": "nasdaq", "DIA": "dow"}
+    index_map = index_tickers
     for ticker, key in index_map.items():
         if ticker in us_data:
             returns = compute_daily_return(us_data[ticker]["close"]).dropna()
