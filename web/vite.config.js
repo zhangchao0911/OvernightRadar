@@ -8,7 +8,7 @@ const dataDir = path.resolve(__dirname, '../data');
 
 export default defineConfig({
   root: '.',
-  base: '/US-CN-Sector-Mapper/',
+  base: '/OvernightRadar/',
   build: {
     outDir: 'dist',
   },
