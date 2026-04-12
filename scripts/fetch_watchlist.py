@@ -25,8 +25,9 @@ HISTORY_POINTS = 30
 
 # Finnhub
 FINNHUB_QUOTE = "https://finnhub.io/api/v1/quote"
-BATCH_SIZE = 30
-BATCH_DELAY = 1  # 秒，避免触发 60/min 限制
+BATCH_SIZE = 15  # 每批请求数（Finnhub 免费 60 calls/min）
+BATCH_DELAY = 2  # 批次间隔（秒）
+TICKER_DELAY = 1.1  # 单个请求间隔（秒），确保 <60/min
 
 # Google Sheet
 SHEET_ID = "1_xv9pPrxhx9A4OyhrvyTTJuKNXk8rn0m-eAWvnbdXWI"
@@ -86,6 +87,8 @@ def fetch_quotes(tickers: list, api_key: str) -> dict:
                     print(f"    SKIP: {ticker} — 无报价数据")
             except Exception as e:
                 print(f"    ERROR: {ticker} — {e}")
+
+            time.sleep(TICKER_DELAY)
 
         if i + BATCH_SIZE < total:
             time.sleep(BATCH_DELAY)
