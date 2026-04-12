@@ -6,12 +6,52 @@ import pytest
 import sys
 sys.path.insert(0, "scripts")
 from run_daily import (
+    SECTOR_MAP,
     calc_relative_strength,
     calc_volatility_surprise,
     calc_trend,
     calc_sentiment,
     build_market_summary,
 )
+
+
+class TestSectorMap:
+    """板块映射配置验证"""
+
+    def test_has_8_sectors(self):
+        assert len(SECTOR_MAP) == 8
+
+    def test_each_sector_has_required_fields(self):
+        required = [
+            "us_etf", "cn_name", "cn_etf_name", "cn_etf_code",
+            "us_name", "supply_chain",
+        ]
+        for sector in SECTOR_MAP:
+            for field in required:
+                assert field in sector, f"Missing {field} in {sector}"
+
+    def test_each_sector_has_3_supply_chain_stocks(self):
+        for sector in SECTOR_MAP:
+            assert len(sector["supply_chain"]) == 3, \
+                f"{sector['us_name']} has {len(sector['supply_chain'])} stocks, expected 3"
+            for stock in sector["supply_chain"]:
+                assert "name" in stock, f"Missing name in {sector['us_name']}"
+                assert "code" in stock, f"Missing code in {sector['us_name']}"
+
+    def test_us_etfs_are_unique(self):
+        etfs = [s["us_etf"] for s in SECTOR_MAP]
+        assert len(etfs) == len(set(etfs))
+
+    def test_stock_codes_are_unique(self):
+        codes = []
+        for sector in SECTOR_MAP:
+            for stock in sector["supply_chain"]:
+                codes.append(stock["code"])
+        assert len(codes) == len(set(codes)), "Duplicate stock codes found"
+
+    def test_total_24_supply_chain_stocks(self):
+        total = sum(len(s["supply_chain"]) for s in SECTOR_MAP)
+        assert total == 24
 
 
 class TestRelativeStrength:

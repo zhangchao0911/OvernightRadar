@@ -5,6 +5,7 @@
 import json
 import os
 import sys
+import time
 from datetime import datetime, timedelta
 
 import numpy as np
@@ -21,6 +22,11 @@ SECTOR_MAP = [
         "cn_index": "801081",
         "cn_etf_name": "半导体ETF",
         "cn_etf_code": "512480",
+        "supply_chain": [
+            {"name": "中际旭创", "code": "300308"},
+            {"name": "北方华创", "code": "002371"},
+            {"name": "中微公司", "code": "688012"},
+        ],
     },
     {
         "id": 2,
@@ -30,6 +36,11 @@ SECTOR_MAP = [
         "cn_index": "801080",
         "cn_etf_name": "科技ETF",
         "cn_etf_code": "515000",
+        "supply_chain": [
+            {"name": "立讯精密", "code": "002475"},
+            {"name": "歌尔股份", "code": "002241"},
+            {"name": "京东方A", "code": "000725"},
+        ],
     },
     {
         "id": 3,
@@ -39,6 +50,11 @@ SECTOR_MAP = [
         "cn_index": "801880",
         "cn_etf_name": "新能源车ETF",
         "cn_etf_code": "515030",
+        "supply_chain": [
+            {"name": "宁德时代", "code": "300750"},
+            {"name": "拓普集团", "code": "601689"},
+            {"name": "比亚迪", "code": "002594"},
+        ],
     },
     {
         "id": 4,
@@ -48,6 +64,11 @@ SECTOR_MAP = [
         "cn_index": "801750",
         "cn_etf_name": "计算机ETF",
         "cn_etf_code": "512720",
+        "supply_chain": [
+            {"name": "寒武纪", "code": "688256"},
+            {"name": "海光信息", "code": "688041"},
+            {"name": "浪潮信息", "code": "000977"},
+        ],
     },
     {
         "id": 5,
@@ -57,6 +78,53 @@ SECTOR_MAP = [
         "cn_index": "801050",
         "cn_etf_name": "黄金ETF",
         "cn_etf_code": "518880",
+        "supply_chain": [
+            {"name": "山东黄金", "code": "600547"},
+            {"name": "紫金矿业", "code": "601899"},
+            {"name": "中金黄金", "code": "600489"},
+        ],
+    },
+    {
+        "id": 6,
+        "us_name": "机器人",
+        "us_etf": "BOTZ",
+        "cn_name": "机械设备",
+        "cn_index": "801890",
+        "cn_etf_name": "机器人ETF",
+        "cn_etf_code": "159770",
+        "supply_chain": [
+            {"name": "拓斯达", "code": "300607"},
+            {"name": "绿的谐波", "code": "688017"},
+            {"name": "埃斯顿", "code": "002747"},
+        ],
+    },
+    {
+        "id": 7,
+        "us_name": "商业航天",
+        "us_etf": "UFO",
+        "cn_name": "国防军工",
+        "cn_index": "801740",
+        "cn_etf_name": "航天ETF",
+        "cn_etf_code": "159819",
+        "supply_chain": [
+            {"name": "中国卫星", "code": "600118"},
+            {"name": "航天电器", "code": "002025"},
+            {"name": "中科星图", "code": "688568"},
+        ],
+    },
+    {
+        "id": 8,
+        "us_name": "存储",
+        "us_etf": "DRAM",
+        "cn_name": "存储",
+        "cn_index": "",
+        "cn_etf_name": "存储",
+        "cn_etf_code": "",
+        "supply_chain": [
+            {"name": "兆易创新", "code": "603986"},
+            {"name": "北京君正", "code": "300223"},
+            {"name": "东芯股份", "code": "688110"},
+        ],
     },
 ]
 
@@ -299,6 +367,44 @@ def fetch_cn_index_data(index_code: str, days: int = 150):
     except Exception as e:
         print(f"WARNING: 获取申万指数 {index_code} 失败: {e}", file=sys.stderr)
         return None
+
+
+def fetch_cn_stocks(stock_codes: list) -> dict:
+    """
+    批量拉取 A 股个股最新涨跌幅。
+
+    参数:
+        stock_codes: 股票代码列表（6位数字字符串）
+
+    返回:
+        {code: change_pct} 最近一个交易日的涨跌幅
+    """
+    import akshare as ak
+
+    result = {}
+    for code in stock_codes:
+        try:
+            df = ak.stock_zh_a_hist(symbol=code, period="daily", adjust="qfq")
+            if df is not None and len(df) >= 2:
+                df = df.tail(2)
+                close_col = None
+                for col in df.columns:
+                    if col in ("收盘", "close"):
+                        close_col = col
+                        break
+                if close_col:
+                    prev_close = float(df[close_col].iloc[0])
+                    latest_close = float(df[close_col].iloc[1])
+                    change_pct = round(
+                        (latest_close - prev_close) / prev_close * 100, 2
+                    )
+                    result[code] = change_pct
+            time.sleep(0.3)
+        except Exception as e:
+            print(
+                f"WARNING: 获取个股 {code} 失败: {e}", file=sys.stderr
+            )
+    return result
 
 
 def compute_daily_return(close_series: pd.Series) -> pd.Series:
