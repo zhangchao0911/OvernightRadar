@@ -6,6 +6,7 @@
  * 渲染指标切换 Tab。
  */
 export function renderIndicators(container, indicators, activeKey, onChange) {
+  let currentActive = activeKey;
   const activeInd = indicators.find(i => i.key === activeKey);
   const descText = activeInd ? activeInd.desc : '';
 
@@ -22,8 +23,9 @@ export function renderIndicators(container, indicators, activeKey, onChange) {
   container.querySelectorAll('.wl-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const key = tab.dataset.key;
-      if (key === activeKey) return;
+      if (key === currentActive) return;
 
+      currentActive = key;
       container.querySelectorAll('.wl-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
 
