@@ -3,30 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>隔夜雷达</title>
+  <title>市场观察表 · 隔夜雷达</title>
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
+  <!-- ─── 主内容区 ────────────────────── -->
   <div id="app" style="display:none">
-    <header class="header">
-      <h1 class="title">隔夜雷达</h1>
-      <p class="slogan">昨夜美股异动，今日A股看点</p>
-      <div class="market-indices" id="market-indices"></div>
-      <p class="date" id="report-date"></p>
+    <header class="app-header" id="app-header">
+      <!-- 由 JS 动态填充：根据当前 view 显示不同 header -->
     </header>
 
-    <main id="cards-container"></main>
-
-    <footer class="disclaimer">
-      <p class="disclaimer-title">⚠️ 免责声明</p>
-      <p>本工具仅供数据参考，不构成任何投资建议或投资指导。</p>
-      <p>数据来源：Yahoo Finance、AKShare、公开市场数据。</p>
-      <p>股市有风险，投资需谨慎。</p>
-    </footer>
+    <main id="view-container">
+      <!-- 由 JS 动态填充：hash 路由切换 view -->
+    </main>
   </div>
 
+  <!-- ─── 底部 Tab 导航 ────────────────── -->
+  <nav id="tab-nav" class="tab-nav" style="display:none">
+    <button class="tab-item active" data-view="heatmap">
+      <span class="tab-icon">🌐</span>
+      <span class="tab-label">市场观察</span>
+    </button>
+    <button class="tab-item" data-view="radar">
+      <span class="tab-icon">📡</span>
+      <span class="tab-label">隔夜雷达</span>
+    </button>
+  </nav>
+
+  <!-- ─── 加载/错误状态 ────────────────── -->
   <div id="loading" class="loading">
-    <p>正在加载今日数据...</p>
+    <p>正在加载市场数据...</p>
   </div>
 
   <div id="error" class="error" style="display:none">
