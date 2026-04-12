@@ -20,8 +20,9 @@ export default defineConfig({
       name: 'serve-data',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url && req.url.startsWith('/data/')) {
-            const relativePath = req.url.replace('/data/', '');
+          const dataPrefix = '/OvernightRadar/data/';
+          if (req.url && req.url.startsWith(dataPrefix)) {
+            const relativePath = req.url.replace(dataPrefix, '');
             const filePath = path.join(dataDir, relativePath);
             if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
               res.setHeader('Content-Type', 'application/json');
