@@ -1,3 +1,5 @@
+/* ─── Reset & Base ────────────────────────── */
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +11,7 @@ body {
   background: #f5f5f5;
   color: #1a1a1a;
   line-height: 1.5;
+  padding-bottom: 60px; /* 为底部 Tab 留空间 */
 }
 
 #app {
@@ -18,9 +21,55 @@ body {
   min-height: 100vh;
 }
 
-/* ─── Header ────────────────────────────────── */
+/* ─── 底部 Tab 导航 ──────────────────────── */
 
-.header {
+.tab-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: #fff;
+  border-top: 1px solid #e8e8e8;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  z-index: 100;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 11px;
+  color: #8c8c8c;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-item.active {
+  color: #1890ff;
+}
+
+.tab-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.tab-label {
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* ─── Header ────────────────────────────── */
+
+.app-header {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -57,12 +106,20 @@ body {
   margin-top: 4px;
 }
 
-/* ─── Colors: 涨红跌绿 ─────────────────────── */
+/* ─── Colors: 涨红跌绿 ──────────────────── */
 
 .up { color: #cf1322; }
 .down { color: #389e0d; }
 
-/* ─── Card ──────────────────────────────────── */
+/* ─── 空状态 ────────────────────────────── */
+
+.empty-state {
+  text-align: center;
+  color: #888;
+  padding: 40px 0;
+}
+
+/* ─── 雷达卡片 ──────────────────────────── */
 
 .card {
   background: #fff;
@@ -136,8 +193,6 @@ body {
   margin-left: 4px;
 }
 
-/* ─── Supply Chain Stocks ───────────────────── */
-
 .card-stocks {
   margin-top: 6px;
 }
@@ -163,7 +218,225 @@ body {
   color: #bbb;
 }
 
-/* ─── Disclaimer ───────────────────────────── */
+/* ─── 热力图: 指标切换 Tab ─────────────── */
+
+.wl-indicators {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+
+.wl-tab {
+  padding: 6px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 16px;
+  background: #fff;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.wl-tab:hover {
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.wl-tab.active {
+  background: #1890ff;
+  border-color: #1890ff;
+  color: #fff;
+}
+
+/* ─── 热力图: 分组方块 ─────────────────── */
+
+.wl-group {
+  margin-bottom: 20px;
+}
+
+.wl-group-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+
+.wl-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ─── 热力图: 单个方块 ──────────────────── */
+
+.wl-block {
+  position: relative;
+  width: 72px;
+  height: 52px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.wl-block:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wl-block:active {
+  transform: scale(0.98);
+}
+
+.wl-block-ticker {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.wl-block-value {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* ─── 热力图: A股映射 Badge ─────────────── */
+
+.wl-cn-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1890ff;
+  color: #fff;
+  font-size: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* ─── 热力图: Detail Panel ──────────────── */
+
+.wl-detail {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wl-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.wl-detail-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.wl-detail-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.wl-detail-price {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.wl-detail-price-value {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.wl-detail-change {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.wl-detail-ytd {
+  font-size: 13px;
+  color: #666;
+}
+
+#sparkline-canvas {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 12px;
+}
+
+/* ─── 热力图: REL Grid ─────────────────── */
+
+.wl-rel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.wl-rel-item {
+  text-align: center;
+  padding: 6px 4px;
+  background: #fafafa;
+  border-radius: 6px;
+}
+
+.wl-rel-label {
+  display: block;
+  font-size: 11px;
+  color: #999;
+}
+
+.wl-rel-value {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ─── 热力图: A股映射区域 ───────────────── */
+
+.wl-cn-mapping {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #e6f7ff;
+  border-radius: 6px;
+}
+
+.wl-cn-badge-detail {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1890ff;
+}
+
+.wl-cn-hint {
+  font-size: 11px;
+  color: #999;
+}
+
+/* ─── 免责声明 ──────────────────────────── */
 
 .disclaimer {
   margin-top: 32px;
@@ -181,7 +454,7 @@ body {
   color: #666;
 }
 
-/* ─── Loading & Error ───────────────────────── */
+/* ─── Loading & Error ──────────────────── */
 
 .loading {
   text-align: center;
