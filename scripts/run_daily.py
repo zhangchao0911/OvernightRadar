@@ -412,33 +412,16 @@ def compute_daily_return(close_series: pd.Series) -> pd.Series:
     return close_series.pct_change() * 100
 
 
-def compute_open_return(df: pd.DataFrame) -> pd.Series:
-    """
-    计算次日开盘涨跌幅（%）。
-    open_return[T] = (open[T] - close[T-1]) / close[T-1] * 100
-    """
-    prev_close = df["close"].shift(1)
-    return (df["open"] - prev_close) / prev_close * 100
-
-
 # ─── 主运行逻辑 ───────────────────────────────────────────
-
-def align_dates(us_date, cn_dates: pd.DatetimeIndex):
-    """找到美股日期 T 之后最近的 A 股交易日 T'。"""
-    future = cn_dates[cn_dates > us_date]
-    if len(future) == 0:
-        return None
-    return future[0]
-
 
 def run_daily(output_dir: str = "data/results"):
     """
-    主入口：采集数据 → 计算 → 输出 JSON。
+    V1.1 主入口：采集数据 → 计算新指标 → 输出 JSON。
     返回生成的报告 dict，失败返回 None。
     """
-    tickers = [s["us_etf"] for s in SECTOR_MAP]
+    # ─── 1. 拉取美股数据（8 板块 ETF + SPY/QQQ/DIA） ─────────
+    tickers = [s["us_etf"] for s in SECTOR_MAP] + ["SPY", "QQQ", "DIA"]
 
-    # 1. 拉取美股数据
     print("Fetching US data...")
     us_data = fetch_us_data(tickers)
     if not us_data:
@@ -455,110 +438,105 @@ def run_daily(output_dir: str = "data/results"):
         print(f"SKIP: {output_path} already exists")
         return None
 
-    # 2. 拉取 A 股数据
-    print("Fetching CN data...")
-    cn_data = {}
-    for sector in SECTOR_MAP:
-        df = fetch_cn_index_data(sector["cn_index"])
-        if df is not None:
-            cn_data[sector["cn_index"]] = df
+    # ─── 2. 提取市场指数涨跌幅 ─────────────────────────────
+    market_indices = {}
+    index_map = {"SPY": "sp500", "QQQ": "nasdaq", "DIA": "dow"}
+    for ticker, key in index_map.items():
+        if ticker in us_data:
+            returns = compute_daily_return(us_data[ticker]["close"]).dropna()
+            market_indices[key] = {
+                "change_pct": round(float(returns.iloc[-1]), 2)
+            }
 
-    # 3. 计算每对板块
-    cards = []
-    quiet_sectors = []
+    spy_change = market_indices.get("sp500", {}).get("change_pct", 0.0)
+
+    # ─── 3. 拉取 A 股个股数据 ──────────────────────────────
+    all_stock_codes = []
+    for sector in SECTOR_MAP:
+        for stock in sector["supply_chain"]:
+            all_stock_codes.append(stock["code"])
+
+    print(f"Fetching {len(all_stock_codes)} CN stocks...")
+    cn_stock_changes = fetch_cn_stocks(all_stock_codes)
+
+    # ─── 4. 逐板块计算 ─────────────────────────────────────
+    sectors = []
 
     for sector in SECTOR_MAP:
         us_ticker = sector["us_etf"]
-        cn_idx_code = sector["cn_index"]
 
-        if us_ticker not in us_data or cn_idx_code not in cn_data:
-            print(f"SKIP: {sector['us_name']} 数据不完整")
+        if us_ticker not in us_data:
+            print(f"SKIP: {sector['us_name']} 无美股数据")
             continue
 
-        us_df = us_data[us_ticker]
-        cn_df = cn_data[cn_idx_code]
+        # 美股涨跌幅序列
+        us_returns = compute_daily_return(us_data[us_ticker]["close"]).dropna()
 
-        # 计算美股日涨跌幅
-        us_returns = compute_daily_return(us_df["close"]).dropna()
-
-        # 计算 A 股次日开盘涨跌幅
-        cn_open_returns = compute_open_return(cn_df).dropna()
-
-        # 对齐日期：美股 T → A 股 T+1
-        us_aligned = []
-        cn_aligned = []
-        cn_dates = cn_open_returns.index
-
-        for us_date in us_returns.index:
-            cn_date = align_dates(us_date, cn_dates)
-            if cn_date is not None:
-                us_aligned.append(us_returns[us_date])
-                cn_aligned.append(cn_open_returns[cn_date])
-
-        if len(us_aligned) < 10:
-            print(f"SKIP: {sector['us_name']} 配对数据不足({len(us_aligned)})")
+        if len(us_returns) < 2:
+            print(f"SKIP: {sector['us_name']} 数据不足")
             continue
 
-        us_series = pd.Series(us_aligned)
-        cn_series = pd.Series(cn_aligned)
+        us_change_pct = round(float(us_returns.iloc[-1]), 2)
 
-        # 当日美股涨跌幅（最新一天）
-        us_today_change = float(us_returns.iloc[-1])
-
-        # 计算条件概率
-        prob, avg_impact, sample_count = calc_conditional_prob(
-            us_series, cn_series, threshold=THRESHOLD, window=WINDOW
+        # 计算新指标
+        rs = calc_relative_strength(us_change_pct, spy_change)
+        vol = calc_volatility_surprise(us_returns)
+        trend = calc_trend(us_returns)
+        sentiment = calc_sentiment(
+            rs, vol["vol_multiple"], trend["direction"], trend["consecutive_days"]
         )
 
-        is_significant = abs(us_today_change) > THRESHOLD
+        # 产业链标的涨跌幅
+        supply_chain = []
+        for stock in sector["supply_chain"]:
+            change_pct = cn_stock_changes.get(stock["code"])
+            supply_chain.append(
+                {
+                    "name": stock["name"],
+                    "code": stock["code"],
+                    "change_pct": change_pct,
+                }
+            )
 
-        card = {
-            "us_name": sector["us_name"],
-            "us_etf": sector["us_etf"],
-            "us_change_pct": round(us_today_change, 2),
-            "cn_name": sector["cn_name"],
-            "cn_etf_name": sector["cn_etf_name"],
-            "cn_etf_code": sector["cn_etf_code"],
-            "is_significant": is_significant,
-        }
+        sectors.append(
+            {
+                "us_name": sector["us_name"],
+                "us_etf": sector["us_etf"],
+                "us_change_pct": us_change_pct,
+                "relative_strength": rs,
+                "volatility": vol,
+                "trend": trend,
+                "cn_name": sector["cn_name"],
+                "cn_etf_name": sector["cn_etf_name"],
+                "cn_etf_code": sector["cn_etf_code"],
+                "sentiment": sentiment["sentiment"],
+                "sentiment_level": sentiment["sentiment_level"],
+                "supply_chain": supply_chain,
+            }
+        )
 
-        if prob is not None:
-            card["prob_high_open"] = round(prob, 2)
-            card["avg_impact"] = round(avg_impact, 2)
-            card["sample_count"] = sample_count
-            card["window_days"] = WINDOW
-        else:
-            card["prob_high_open"] = None
-            card["avg_impact"] = None
-            card["sample_count"] = 0
-            card["window_days"] = WINDOW
-
-        if is_significant:
-            cards.append(card)
-        else:
-            quiet_sectors.append(card)
-
-    # 按条件概率 × 涨跌幅绝对值 降序排列
-    cards.sort(
-        key=lambda c: (c.get("prob_high_open") or 0) * abs(c["us_change_pct"]),
+    # ─── 5. 排序：情绪等级降序，同等级按相对强度绝对值降序 ─────
+    sectors.sort(
+        key=lambda s: (s["sentiment_level"], abs(s["relative_strength"])),
         reverse=True,
     )
 
-    # 4. 组装报告
+    # ─── 6. 组装报告 ──────────────────────────────────────
     report = {
         "date": report_date,
         "weekday": _weekday_cn(report_date),
-        "cards": cards,
-        "quiet_sectors": quiet_sectors,
+        "market_indices": market_indices,
+        "market_summary": build_market_summary(sectors),
+        "sectors": sectors,
         "updated_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00"),
     }
 
-    # 5. 输出 JSON
+    # ─── 7. 输出 JSON ────────────────────────────────────
     os.makedirs(output_dir, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
 
-    print(f"OK: {output_path} ({len(cards)} cards, {len(quiet_sectors)} quiet)")
+    print(f"OK: {output_path} ({len(sectors)} sectors)")
     return report
 
 
