@@ -49,6 +49,7 @@ export function renderBlock(etf, indicatorKey) {
   return `
     <div class="wl-block" data-ticker="${etf.ticker}" style="background-color: ${bgColor}">
       <span class="wl-block-ticker">${etf.ticker}</span>
+      <span class="wl-block-name">${etf.name || ''}</span>
       <span class="wl-block-value">${displayValue}</span>
       ${cnBadge}
     </div>

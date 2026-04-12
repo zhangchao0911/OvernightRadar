@@ -221,12 +221,21 @@ body {
 /* ─── 热力图: 指标切换 Tab ─────────────── */
 
 .wl-indicators {
+  margin-bottom: 16px;
+}
+
+.wl-tabs-row {
   display: flex;
   gap: 6px;
-  margin-bottom: 16px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 4px;
+}
+
+.wl-indicator-desc {
+  font-size: 12px;
+  color: #888;
+  margin-top: 6px;
 }
 
 .wl-tab {
@@ -277,7 +286,7 @@ body {
 .wl-block {
   position: relative;
   width: 72px;
-  height: 52px;
+  height: 58px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -300,6 +309,17 @@ body {
   font-size: 11px;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.75);
+}
+
+.wl-block-name {
+  font-size: 8px;
+  color: rgba(0, 0, 0, 0.5);
+  max-width: 66px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.1;
 }
 
 .wl-block-value {
@@ -452,6 +472,13 @@ body {
   font-weight: 600;
   margin-bottom: 4px;
   color: #666;
+}
+
+.wl-top-disclaimer {
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  line-height: 1.6;
 }
 
 /* ─── Loading & Error ──────────────────── */

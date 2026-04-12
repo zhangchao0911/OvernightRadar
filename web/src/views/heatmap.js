@@ -7,11 +7,11 @@ import { renderIndicators } from '../components/indicators.js';
 import { showDetail } from '../components/sector-detail.js';
 
 const INDICATORS = [
-  { key: 'change_pct', label: '1D%' },
-  { key: 'rel_5', label: 'REL5' },
-  { key: 'rel_20', label: 'REL20' },
-  { key: 'rel_60', label: 'REL60' },
-  { key: 'rel_120', label: 'REL120' },
+  { key: 'change_pct', label: '日涨跌', desc: '当日涨跌幅 (%)' },
+  { key: 'rel_5', label: '5日强弱', desc: '近5日相对标普500的超额收益' },
+  { key: 'rel_20', label: '20日强弱', desc: '近20日(约1月)相对标普500的超额收益' },
+  { key: 'rel_60', label: '60日强弱', desc: '近60日(约1季)相对标普500的超额收益' },
+  { key: 'rel_120', label: '120日强弱', desc: '近120日(约半年)相对标普500的超额收益' },
 ];
 
 const GROUP_ORDER = [
@@ -49,6 +49,14 @@ export async function renderHeatmapView(container, header) {
     <p class="date">更新时间: ${watchlistData.updated_at || watchlistData.date}</p>
   `;
 
+  // 免责声明 (顶部)
+  const disclaimerHtml = `
+    <div class="disclaimer wl-top-disclaimer">
+      <p>仅供数据参考，不构成投资建议。数据来源：TheMarketMemo、Yahoo Finance。</p>
+      <p>REL (相对强度) = ETF 涨跌幅 - 标普500 涨跌幅，正值表示跑赢大盘。</p>
+    </div>
+  `;
+
   // 指标切换
   const indicatorsHtml = '<nav class="wl-indicators" id="wl-indicators"></nav>';
 
@@ -58,17 +66,7 @@ export async function renderHeatmapView(container, header) {
   // 详情面板
   const detailHtml = '<section id="wl-detail" class="wl-detail" style="display:none"></section>';
 
-  // 免责声明
-  const disclaimerHtml = `
-    <footer class="disclaimer">
-      <p class="disclaimer-title">⚠️ 免责声明</p>
-      <p>本工具仅供数据参考，不构成任何投资建议。</p>
-      <p>数据来源：TheMarketMemo Market Watchlist、Yahoo Finance。</p>
-      <p>REL (相对强度) = ETF 涨跌幅 - 标普500 涨跌幅。</p>
-    </footer>
-  `;
-
-  container.innerHTML = indicatorsHtml + heatmapHtml + detailHtml + disclaimerHtml;
+  container.innerHTML = disclaimerHtml + indicatorsHtml + heatmapHtml + detailHtml;
 
   // 渲染指标切换
   renderIndicators(
