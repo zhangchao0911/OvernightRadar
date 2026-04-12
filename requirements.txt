@@ -2,4 +2,3 @@ yfinance>=1.2.0
 akshare
 pandas
 numpy
-requests

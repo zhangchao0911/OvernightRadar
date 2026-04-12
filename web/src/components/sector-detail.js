@@ -77,28 +77,12 @@ export function showDetail(etf, detailEl) {
     currentTicker = null;
   });
 
-  // 绘制走势图（MVP 用模拟数据，后续接入历史价格）
+  // 绘制走势图（使用真实历史价格）
   const canvas = document.getElementById('sparkline-canvas');
-  if (canvas && etf.price) {
-    const mockData = generateMockHistory(etf);
-    drawSparkline(canvas, mockData, { width: canvas.parentElement.clientWidth - 32 });
+  if (canvas && etf.history && etf.history.length >= 2) {
+    drawSparkline(canvas, etf.history, { width: canvas.parentElement.clientWidth - 32 });
   }
 
   // 滚动到详情面板
   detailEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-/**
- * MVP 阶段：基于当日数据生成模拟走势。
- */
-function generateMockHistory(etf) {
-  const base = etf.price / (1 + etf.change_pct / 100);
-  const points = 20;
-  const data = [];
-  for (let i = 0; i <= points; i++) {
-    const noise = (Math.random() - 0.5) * base * 0.01;
-    const trend = (etf.change_pct / 100) * base * (i / points);
-    data.push(base + trend + noise);
-  }
-  return data;
 }
