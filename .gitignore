@@ -15,8 +15,9 @@ web/dist/
 .idea/
 .vscode/
 
-# Local working docs
-docs/
+# Local working docs (keep superpowers specs tracked)
+docs/*
+!docs/superpowers/
 
 # Claude Code local config
 .claude/
