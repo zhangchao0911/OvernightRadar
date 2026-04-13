@@ -158,8 +158,8 @@ async function renderMarketView(container, header, market, benchmark = null) {
     </div>
   `;
 
-  // 市场切换器
-  const marketSwitcherHtml = '<div id="wl-market-switcher" class="wl-market-switcher-container"></div>';
+  // 市场切换器（左侧垂直）
+  const marketSwitcherHtml = '<div id="wl-market-switcher" class="wl-market-switcher-left"></div>';
 
   // 免责声明
   const disclaimerHtml = `
@@ -169,21 +169,23 @@ async function renderMarketView(container, header, market, benchmark = null) {
     </div>
   `;
 
-  // 基准切换器（仅A股）
-  const benchmarkSwitcherHtml = isCN
-    ? '<div id="wl-benchmark-switcher" class="wl-benchmark-switcher-container"></div>'
-    : '';
-
-  // 指标切换
-  const indicatorsHtml = '<nav class="wl-indicators" id="wl-indicators"></nav>';
-
-  // 热力图容器
-  const heatmapHtml = '<div id="wl-heatmap"></div>';
+  // 主内容区：左侧市场切换 + 右侧内容
+  const mainContentHtml = `
+    <div class="wl-main-layout">
+      <div class="wl-left-sidebar">
+        ${marketSwitcherHtml}
+      </div>
+      <div class="wl-right-content">
+        <nav class="wl-indicators" id="wl-indicators"></nav>
+        <div id="wl-heatmap"></div>
+      </div>
+    </div>
+  `;
 
   // 详情面板
   const detailHtml = '<section id="wl-detail" class="wl-detail" style="display:none"></section>';
 
-  container.innerHTML = marketSwitcherHtml + disclaimerHtml + benchmarkSwitcherHtml + indicatorsHtml + heatmapHtml + detailHtml;
+  container.innerHTML = disclaimerHtml + mainContentHtml + detailHtml;
 
   // 渲染市场切换器
   renderMarketSwitcher(
@@ -207,7 +209,7 @@ async function renderMarketView(container, header, market, benchmark = null) {
 
   // 渲染指标切换
   const cnIndicators = isCN ? [
-    { key: 'change_pct', label: '日涨跌', desc: '当日涨跌幅 (%)' },
+    { key: 'change_pct', label: '日涨跌', desc: '当日涨跌幅 (%)', hasBenchmark: true },
     { key: 'rel_5', label: '5日强弱', desc: `近5日相对${data.benchmark?.name || '沪深300'}的超额收益` },
     { key: 'rel_20', label: '20日强弱', desc: `近20日(约1月)相对${data.benchmark?.name || '沪深300'}的超额收益` },
     { key: 'rel_60', label: '60日强弱', desc: `近60日(约1季)相对${data.benchmark?.name || '沪深300'}的超额收益` },
@@ -223,6 +225,38 @@ async function renderMarketView(container, header, market, benchmark = null) {
       renderHeatmapContent(document.getElementById('wl-heatmap'), data.groups, currentIndicator, isCN);
     }
   );
+
+  // 渲染基准切换器（仅A股，在日涨跌下方）
+  if (isCN) {
+    const indicatorsContainer = document.getElementById('wl-indicators');
+    const benchmarkHtml = `
+      <div class="wl-benchmark-inline">
+        <span class="wl-benchmark-label">基准:</span>
+        <button class="wl-benchmark-btn ${currentBenchmark === 'hs300' ? 'active' : ''}" data-benchmark="hs300">沪深300</button>
+        <button class="wl-benchmark-btn ${currentBenchmark === 'zz500' ? 'active' : ''}" data-benchmark="zz500">中证500</button>
+      </div>
+    `;
+    // 插入到第一个指标按钮后面
+    const firstIndicator = indicatorsContainer.querySelector('.wl-indicator-btn');
+    if (firstIndicator) {
+      firstIndicator.insertAdjacentHTML('afterend', benchmarkHtml);
+    }
+
+    // 绑定基准切换事件
+    indicatorsContainer.querySelectorAll('.wl-benchmark-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const newBenchmark = btn.dataset.benchmark;
+        if (newBenchmark !== currentBenchmark) {
+          currentBenchmark = newBenchmark;
+          // 更新按钮状态
+          indicatorsContainer.querySelectorAll('.wl-benchmark-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.benchmark === newBenchmark);
+          });
+          alert(`切换到基准: ${newBenchmark}（需要重新获取数据，功能开发中）`);
+        }
+      });
+    });
+  }
 
   // 渲染热力图
   renderHeatmapContent(document.getElementById('wl-heatmap'), data.groups, currentIndicator, isCN);
