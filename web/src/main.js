@@ -4,10 +4,12 @@
 import { renderTabNav, setActiveTab } from './components/nav.js';
 import { renderRadarView } from './views/radar.js';
 import { renderHeatmapView } from './views/heatmap.js';
+import { renderSectorsView } from './views/sectors.js';
 
 const VIEWS = {
   heatmap: renderHeatmapView,
   radar: renderRadarView,
+  sectors: renderSectorsView,
 };
 
 const DEFAULT_VIEW = 'heatmap';
