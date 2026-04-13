@@ -31,3 +31,4 @@ data/results/*.json
 data/watchlist/*.json
 !data/watchlist/.gitkeep
 skills-lock.json
+.worktrees
