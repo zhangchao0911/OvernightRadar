@@ -50,3 +50,55 @@ export function fetchRadarData() {
 export function fetchCNWatchlistData() {
   return fetchLatest('cn_watchlist');
 }
+
+/** 获取交易信号数据 */
+export async function fetchSignals(filters = {}) {
+  const report = await fetchLatest('results');
+  if (!report || !report.signals) return [];
+
+  let signals = [...report.signals];
+
+  // 应用过滤器
+  if (filters.direction && filters.direction !== 'all') {
+    signals = signals.filter(s => s.direction === filters.direction);
+  }
+  if (filters.confidence && filters.confidence !== 'all') {
+    signals = signals.filter(s => s.confidence === filters.confidence);
+  }
+  if (filters.type && filters.type !== 'all') {
+    signals = signals.filter(s => s.type === filters.type);
+  }
+
+  return signals;
+}
+
+/** 获取信号历史数据 */
+export async function fetchSignalHistory() {
+  const report = await fetchLatest('results');
+  return report?.signal_history || [];
+}
+
+/** 获取新闻数据 */
+export async function fetchNews(options = {}) {
+  const report = await fetchLatest('results');
+  if (!report || !report.news) return [];
+
+  let news = [...report.news];
+
+  // 应用分类过滤
+  if (options.category && options.category !== 'all') {
+    news = news.filter(n => n.category === options.category);
+  }
+
+  // 应用搜索过滤
+  if (options.searchQuery) {
+    const query = options.searchQuery.toLowerCase();
+    news = news.filter(n =>
+      n.title?.toLowerCase().includes(query) ||
+      n.summary?.toLowerCase().includes(query) ||
+      n.sectors?.some(s => s.toLowerCase().includes(query))
+    );
+  }
+
+  return news;
+}

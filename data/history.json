@@ -1,0 +1,13 @@
+{
+  "signals": [],
+  "stats": {
+    "total": 0,
+    "hits": 0,
+    "misses": 0,
+    "pending": 0,
+    "hit_rate": 0.0,
+    "avg_return": 0.0,
+    "last_updated": null
+  },
+  "by_level": {}
+}

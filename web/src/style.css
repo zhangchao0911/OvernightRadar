@@ -37,6 +37,59 @@ body {
   margin: 0 auto;
 }
 
+/* ─── 雷达内页 Tab 导航 ──────────────────── */
+
+.radar-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 4px;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.radar-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 11px;
+  color: #666;
+  transition: all 0.2s;
+  border-radius: 8px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.radar-tab.active {
+  background: #fff;
+  color: #1890ff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.radar-tab-icon {
+  font-size: 18px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.radar-tab-label {
+  font-weight: 500;
+}
+
+.radar-content {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .tab-item {
   flex: 1;
   display: flex;
@@ -495,4 +548,347 @@ body {
   text-align: center;
   padding: 60px 20px;
   color: #cf1322;
+}
+
+/* ─── Radar Tab 样式 ──────────────────────────── */
+
+.radar-tabs {
+  width: 100%;
+}
+
+.radar-tab-nav {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-secondary, #f5f5f5);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  overflow-x: auto;
+}
+
+.radar-tab {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.radar-tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.radar-tab.active {
+  background: var(--primary-color, #1890ff);
+  color: white;
+}
+
+.radar-tab-content {
+  padding: 16px;
+}
+
+/* ─── 信号卡片样式 ───────────────────────────── */
+
+.signals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.signals-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.signals-count {
+  font-size: 14px;
+  color: var(--text-secondary, #666);
+}
+
+.signal-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-left: 4px solid transparent;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.signal-card.signal-strong {
+  border-left-color: #ff4d4f;
+}
+
+.signal-card.signal-medium {
+  border-left-color: #faad14;
+}
+
+.signal-card.signal-weak {
+  border-left-color: #8c8c8c;
+}
+
+.signal-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.signal-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.signal-title {
+  margin: 0;
+  font-size: 16px;
+  flex: 1;
+}
+
+.signal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.signal-direction {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.signal-sector {
+  padding: 2px 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.signal-targets {
+  font-size: 13px;
+  color: var(--text-secondary, #666);
+  margin-bottom: 12px;
+}
+
+.signal-action {
+  background: #f6ffed;
+  border: 1px solid #b7eb8f;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.signal-action .action-label {
+  font-size: 16px;
+}
+
+.signal-action .action-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.signal-score {
+  font-size: 13px;
+  color: var(--text-secondary, #666);
+  margin-bottom: 8px;
+}
+
+.signal-source {
+  font-size: 12px;
+  color: var(--text-secondary, #666);
+  margin-bottom: 8px;
+}
+
+.signal-reason {
+  font-size: 13px;
+  color: var(--text-secondary, #666);
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* ─── 统计面板样式 ───────────────────────────── */
+
+.stats-panel {
+  background: #fafafa;
+  border-radius: 12px;
+  margin-top: 24px;
+  overflow: hidden;
+}
+
+.stats-panel.collapsed .stats-content {
+  display: none;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.stats-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.stats-toggle {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.stats-panel:not(.collapsed) .stats-toggle {
+  transform: rotate(180deg);
+}
+
+.stats-content {
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.stats-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.stats-label {
+  color: var(--text-secondary, #666);
+}
+
+.stats-value.good {
+  color: #52c41a;
+  font-weight: 600;
+}
+
+.stats-breakdown {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.stats-breakdown h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+
+/* ─── 新闻列表样式 ───────────────────────────── */
+
+.news-container {
+  width: 100%;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.news-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.news-count {
+  font-size: 14px;
+  color: var(--text-secondary, #666);
+}
+
+.news-item {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-left: 3px solid transparent;
+}
+
+.news-item.has-signal {
+  border-left-color: #ff4d4f;
+  background: #fff5f5;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.news-headline {
+  margin: 0;
+  font-size: 15px;
+  flex: 1;
+}
+
+.news-signal-badge {
+  flex-shrink: 0;
+  padding: 2px 6px;
+  background: #ff4d4f;
+  color: white;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.news-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-secondary, #666);
+  margin-bottom: 8px;
+}
+
+.news-summary {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: var(--text-secondary, #666);
+  line-height: 1.5;
+}
+
+.news-link {
+  font-size: 13px;
+  color: var(--primary-color, #1890ff);
+  text-decoration: none;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── 响应式适配 ─────────────────────────────── */
+
+@media (max-width: 480px) {
+  .radar-tab-nav {
+    padding: 8px 12px;
+  }
+
+  .radar-tab {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .signal-card {
+    padding: 12px;
+  }
+
+  .signal-header {
+    flex-direction: column;
+  }
+
+  .signal-badge {
+    align-self: flex-start;
+  }
 }

@@ -1,8 +1,8 @@
-name: Daily Update
+name: Daily Radar Update
 
 on:
   schedule:
-    - cron: '0 21 * * 0-4'  # UTC 21:00 周日-周四 = 北京时间 05:00 周一-周五
+    - cron: '30 0 * * 1-5'  # UTC 00:30 周一-周五 = 北京时间 08:30 周一-周五
   workflow_dispatch:  # 支持手动触发
 
 permissions:
@@ -23,22 +23,47 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Run daily script
-        run: python scripts/run_daily.py
+      # ─── 步骤 1: 获取新闻数据 ───
+      - name: Fetch news
+        run: python scripts/fetch_news.py
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
 
-      - name: Run watchlist data fetch
+      # ─── 步骤 2: 生成交易信号 ───
+      - name: Generate signals
+        run: python scripts/generate_signals.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      # ─── 步骤 3: 跟踪历史信号 (T+1 验证) ───
+      - name: Track signals
+        run: python scripts/track_signals.py
+
+      # ─── 步骤 4: 获取 watchlist 数据 ───
+      - name: Fetch watchlist
         run: python scripts/fetch_watchlist.py
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
 
-      - name: Commit and push if changed
+      # ─── 步骤 5: 运行板块联动统计 ───
+      - name: Run daily stats
+        run: python scripts/run_daily.py
+
+      # ─── 步骤 6: 导出统计数据 ───
+      - name: Export stats
+        run: python scripts/track_signals.py --export
+
+      # ─── 步骤 7: 提交数据更改 ───
+      - name: Commit and push data changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/results/ data/watchlist/
-          git diff --staged --quiet || git commit -m "data: daily update $(date +%Y-%m-%d)"
+          git add data/news/ data/signals/ data/watchlist/ data/results/ data/history.json data/stats/
+          git diff --staged --quiet || git commit -m "data: daily radar update $(date +%Y-%m-%d)"
           git push
 
+      # ─── 步骤 8: 构建前端 ───
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -50,10 +75,12 @@ jobs:
           npm install
           npm run build
 
+      # ─── 步骤 9: 准备部署目录 ───
       - name: Prepare deploy directory
         run: |
           cp -r data web/dist/data
 
+      # ─── 步骤 10: 部署到 GitHub Pages ───
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
