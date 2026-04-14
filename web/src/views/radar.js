@@ -10,6 +10,16 @@ function formatChange(value) {
   return `${sign}${value.toFixed(2)}%`;
 }
 
+function formatUpdateTime(isoString) {
+  if (!isoString) return '';
+  const match = isoString.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):/);
+  if (match) {
+    const [, year, month, day, hours, minutes] = match;
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
+  return isoString;
+}
+
 /**
  * 渲染隔夜雷达视图。
  * @param {HTMLElement} container - #view-container
@@ -42,7 +52,7 @@ export async function renderRadarView(container, header) {
     <h1 class="title">隔夜雷达</h1>
     <p class="slogan">昨夜美股异动，今日A股看点</p>
     <div class="market-indices">${indicesHtml}</div>
-    <p class="date">${report.market_summary} · ${report.date} ${report.weekday}</p>
+    <p class="date">${report.market_summary} · ${formatUpdateTime(report.updated_at)}</p>
   `;
 
   // 免责声明 (顶部)
