@@ -48,7 +48,7 @@
         {
           "name": "东芯股份",
           "code": "688110",
-          "change_pct": null
+          "change_pct": 3.6
         }
       ]
     },
@@ -114,7 +114,7 @@
         {
           "name": "立讯精密",
           "code": "002475",
-          "change_pct": null
+          "change_pct": 2.59
         },
         {
           "name": "歌尔股份",
@@ -190,17 +190,17 @@
         {
           "name": "中际旭创",
           "code": "300308",
-          "change_pct": null
+          "change_pct": 6.18
         },
         {
           "name": "北方华创",
           "code": "002371",
-          "change_pct": null
+          "change_pct": 3.09
         },
         {
           "name": "中微公司",
           "code": "688012",
-          "change_pct": null
+          "change_pct": 3.73
         }
       ]
     },
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-14T01:48:28+08:00"
+  "updated_at": "2026-04-14T10:53:17+08:00"
 }
