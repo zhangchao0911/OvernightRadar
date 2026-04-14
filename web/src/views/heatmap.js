@@ -39,7 +39,6 @@ let currentIndicator = 'change_pct';
 let currentMarket = 'us'; // 'us' or 'cn'
 let usWatchlistData = null;
 let cnWatchlistData = null;
-let currentBenchmark = 'hs300'; // A股基准
 
 // ─── 市场切换器渲染 ───────────────────────────────────────
 function renderMarketSwitcher(container, currentMarket, onSwitch) {
@@ -115,7 +114,7 @@ async function renderMarketView(container, header, market, benchmark = null) {
   } else {
     console.log('[MarketView] Loading CN data...');
     if (!cnWatchlistData) {
-      cnWatchlistData = await fetchCNWatchlistData(currentBenchmark);
+      cnWatchlistData = await fetchCNWatchlistData();
     }
     data = cnWatchlistData;
   }
@@ -205,40 +204,6 @@ async function renderMarketView(container, header, market, benchmark = null) {
       renderHeatmapContent(document.getElementById('wl-heatmap'), data.groups, currentIndicator, isCN);
     }
   );
-
-  // 渲染基准切换器（仅A股，单独一行）
-  if (isCN) {
-    const indicatorsContainer = document.getElementById('wl-indicators');
-    const benchmarkHtml = `
-      <div class="wl-benchmark-row">
-        <span class="wl-benchmark-label">基准:</span>
-        <button class="wl-benchmark-btn ${currentBenchmark === 'hs300' ? 'active' : ''}" data-benchmark="hs300">沪深300</button>
-        <button class="wl-benchmark-btn ${currentBenchmark === 'zz500' ? 'active' : ''}" data-benchmark="zz500">中证500</button>
-      </div>
-    `;
-    // 插入到指标按钮行之前
-    const indicatorsRow = indicatorsContainer.querySelector('.wl-indicators-row');
-    if (indicatorsRow) {
-      indicatorsRow.insertAdjacentHTML('beforebegin', benchmarkHtml);
-    }
-
-    // 绑定基准切换事件
-    indicatorsContainer.querySelectorAll('.wl-benchmark-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const newBenchmark = btn.dataset.benchmark;
-        if (newBenchmark !== currentBenchmark) {
-          currentBenchmark = newBenchmark;
-          // 更新按钮状态
-          indicatorsContainer.querySelectorAll('.wl-benchmark-btn').forEach(b => {
-            b.classList.toggle('active', b.dataset.benchmark === newBenchmark);
-          });
-          // 重新获取对应基准的数据
-          cnWatchlistData = null;
-          await renderMarketView(container, header, 'cn');
-        }
-      });
-    });
-  }
 
   // 渲染热力图
   renderHeatmapContent(document.getElementById('wl-heatmap'), data.groups, currentIndicator, isCN);
