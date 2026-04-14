@@ -115,7 +115,7 @@ async function renderMarketView(container, header, market, benchmark = null) {
   } else {
     console.log('[MarketView] Loading CN data...');
     if (!cnWatchlistData) {
-      cnWatchlistData = await fetchCNWatchlistData();
+      cnWatchlistData = await fetchCNWatchlistData(currentBenchmark);
     }
     data = cnWatchlistData;
   }
@@ -224,7 +224,7 @@ async function renderMarketView(container, header, market, benchmark = null) {
 
     // 绑定基准切换事件
     indicatorsContainer.querySelectorAll('.wl-benchmark-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', async () => {
         const newBenchmark = btn.dataset.benchmark;
         if (newBenchmark !== currentBenchmark) {
           currentBenchmark = newBenchmark;
@@ -232,7 +232,9 @@ async function renderMarketView(container, header, market, benchmark = null) {
           indicatorsContainer.querySelectorAll('.wl-benchmark-btn').forEach(b => {
             b.classList.toggle('active', b.dataset.benchmark === newBenchmark);
           });
-          alert(`切换到基准: ${newBenchmark}（需要重新获取数据，功能开发中）`);
+          // 重新获取对应基准的数据
+          cnWatchlistData = null;
+          await renderMarketView(container, header, 'cn');
         }
       });
     });

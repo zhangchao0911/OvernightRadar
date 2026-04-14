@@ -119,10 +119,10 @@ SECTOR_MAP = [
         "id": 8,
         "us_name": "存储",
         "us_etf": "DRAM",
-        "cn_name": "存储",
+        "cn_name": "存储芯片",
         "cn_index": "",
-        "cn_etf_name": "存储",
-        "cn_etf_code": "",
+        "cn_etf_name": "存储芯片ETF",
+        "cn_etf_code": "159346",
         "supply_chain": [
             {"name": "兆易创新", "code": "603986"},
             {"name": "北京君正", "code": "300223"},
@@ -375,6 +375,7 @@ def fetch_cn_index_data(index_code: str, days: int = 150):
 def fetch_cn_stocks(stock_codes: list) -> dict:
     """
     批量拉取 A 股个股最新涨跌幅。
+    优先使用实时行情接口（一次拉取全部），失败后逐个回退到历史数据接口。
 
     参数:
         stock_codes: 股票代码列表（6位数字字符串）
@@ -385,28 +386,65 @@ def fetch_cn_stocks(stock_codes: list) -> dict:
     import akshare as ak
 
     result = {}
-    for code in stock_codes:
-        try:
-            df = ak.stock_zh_a_hist(symbol=code, period="daily", adjust="qfq")
-            if df is not None and len(df) >= 2:
-                df = df.tail(2)
-                close_col = None
-                for col in df.columns:
-                    if col in ("收盘", "close"):
-                        close_col = col
-                        break
-                if close_col:
-                    prev_close = float(df[close_col].iloc[0])
-                    latest_close = float(df[close_col].iloc[1])
-                    change_pct = round(
-                        (latest_close - prev_close) / prev_close * 100, 2
-                    )
-                    result[code] = change_pct
-            time.sleep(0.3)
-        except Exception as e:
-            print(
-                f"WARNING: 获取个股 {code} 失败: {e}", file=sys.stderr
-            )
+
+    # 方案1：使用实时行情接口（一次请求获取全部 A 股）
+    try:
+        print("  尝试批量实时行情接口...")
+        df = ak.stock_zh_a_spot_em()
+        if df is not None and not df.empty:
+            # 查找代码和涨跌幅列（AkShare 列名可能变化）
+            code_col = None
+            change_col = None
+            for col in df.columns:
+                if col in ("代码", "code"):
+                    code_col = col
+                if col in ("涨跌幅", "change_pct"):
+                    change_col = col
+
+            if code_col and change_col:
+                code_set = set(stock_codes)
+                matched = df[df[code_col].astype(str).isin(code_set)]
+                for _, row in matched.iterrows():
+                    code = str(row[code_col])
+                    try:
+                        result[code] = round(float(row[change_col]), 2)
+                    except (ValueError, TypeError):
+                        pass
+                print(f"  批量获取成功: {len(result)}/{len(stock_codes)} 只股票")
+            else:
+                print(f"  WARNING: 实时行情列名不匹配: {list(df.columns)}")
+        else:
+            print("  WARNING: 实时行情返回空数据")
+    except Exception as e:
+        print(f"  WARNING: 批量实时行情失败: {e}")
+
+    # 对于未获取到的股票，逐个回退到历史数据接口
+    missing_codes = [c for c in stock_codes if c not in result]
+    if missing_codes:
+        print(f"  回退到逐个获取: {len(missing_codes)} 只股票")
+        for code in missing_codes:
+            try:
+                df = ak.stock_zh_a_hist(symbol=code, period="daily", adjust="qfq")
+                if df is not None and len(df) >= 2:
+                    df = df.tail(2)
+                    close_col = None
+                    for col in df.columns:
+                        if col in ("收盘", "close"):
+                            close_col = col
+                            break
+                    if close_col:
+                        prev_close = float(df[close_col].iloc[0])
+                        latest_close = float(df[close_col].iloc[1])
+                        change_pct = round(
+                            (latest_close - prev_close) / prev_close * 100, 2
+                        )
+                        result[code] = change_pct
+                time.sleep(0.3)
+            except Exception as e:
+                print(
+                    f"  WARNING: 获取个股 {code} 失败: {e}", file=sys.stderr
+                )
+
     return result
 
 

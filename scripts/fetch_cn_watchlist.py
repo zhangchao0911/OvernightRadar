@@ -15,7 +15,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(__file__))
 from cn_sector_config import (
-    SW_LEVEL1_SECTORS, BENCHMARKS, DEFAULT_BENCHMARK,
+    BENCHMARKS, DEFAULT_BENCHMARK,
     ALL_SECTOR_CODES, get_sector_by_code, get_benchmark_info
 )
 
@@ -61,6 +61,19 @@ def fetch_benchmark_history(benchmark_key: str, period_days: int = 150) -> pd.Se
             )
             if df.empty:
                 print(f"    WARNING: 基准指数 {code} 返回空数据")
+                return pd.Series()
+
+            # 列名映射：AkShare 返回中文列名，需要统一
+            col_map = {}
+            for col in df.columns:
+                if col in ("日期", "date"):
+                    col_map[col] = "date"
+                elif col in ("收盘", "close"):
+                    col_map[col] = "close"
+            df = df.rename(columns=col_map)
+
+            if "date" not in df.columns or "close" not in df.columns:
+                print(f"    WARNING: 基准指数 {code} 缺少必要列 {list(df.columns)}")
                 return pd.Series()
 
             # 筛选日期范围
@@ -151,10 +164,25 @@ def fetch_sector_history(code: str, period_days: int = 150) -> pd.Series:
             if df.empty:
                 return pd.Series()
 
+            # 列名映射：AkShare 返回中文列名，需要统一
+            col_map = {}
+            for col in df.columns:
+                if col in ("日期", "date"):
+                    col_map[col] = "date"
+                elif col in ("收盘", "close"):
+                    col_map[col] = "close"
+            df = df.rename(columns=col_map)
+
+            if "date" not in df.columns:
+                return pd.Series()
+
             # 筛选日期范围
             df['date'] = pd.to_datetime(df['date'])
             df = df[(df['date'] >= start_date) & (df['date'] <= end_date)]
             df = df.sort_values('date')
+
+            if "close" not in df.columns:
+                return pd.Series()
 
             return df.set_index('date')['close']
 
@@ -373,7 +401,12 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None):
 
         # 5. 写入文件
         os.makedirs(output_dir, exist_ok=True)
-        output_path = os.path.join(output_dir, f"{output['date']}.json")
+        # 文件名包含基准信息：默认基准用 {date}.json，其他用 {date}_{benchmark}.json
+        if benchmark_key == DEFAULT_BENCHMARK:
+            filename = f"{output['date']}.json"
+        else:
+            filename = f"{output['date']}_{benchmark_key}.json"
+        output_path = os.path.join(output_dir, filename)
 
         if os.path.exists(output_path):
             print(f"SKIP: {output_path} already exists")

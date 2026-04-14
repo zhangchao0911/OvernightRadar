@@ -13,7 +13,8 @@ SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 TASKS = [
     {"name": "美股市场观察", "script": "fetch_watchlist.py", "optional": False},
-    {"name": "A股市场观察", "script": "fetch_cn_watchlist.py", "optional": False},
+    {"name": "A股市场观察(沪深300)", "script": "fetch_cn_watchlist.py", "optional": False},
+    {"name": "A股市场观察(中证500)", "script": "fetch_cn_watchlist.py --benchmark zz500", "optional": True},
     {"name": "隔夜雷达", "script": "run_daily.py", "optional": False},
 ]
 
@@ -21,7 +22,11 @@ TASKS = [
 
 def run_task(script_name: str) -> bool:
     """运行单个脚本，返回是否成功"""
-    script_path = os.path.join(SCRIPTS_DIR, script_name)
+    # 支持带参数的脚本，如 "fetch_cn_watchlist.py --benchmark zz500"
+    parts = script_name.split()
+    script_file = parts[0]
+    script_args = parts[1:]
+    script_path = os.path.join(SCRIPTS_DIR, script_file)
     if not os.path.exists(script_path):
         print(f"ERROR: 脚本不存在: {script_path}")
         return False
@@ -31,7 +36,7 @@ def run_task(script_name: str) -> bool:
     print(f"{'=' * 50}")
 
     result = subprocess.run(
-        [sys.executable, script_path],
+        [sys.executable, script_path] + script_args,
         cwd=SCRIPTS_DIR,
         capture_output=False,
     )
