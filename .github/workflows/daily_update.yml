@@ -2,7 +2,7 @@ name: Daily Radar Update
 
 on:
   schedule:
-    - cron: '0 22 * * 0-4'  # UTC 22:00 周日-周四 = 北京时间 06:00 周一-周五（美股收盘后1-2小时）
+    - cron: '0 0 * * 1-5'  # UTC 00:00 周一-周五 = 北京时间 08:00 周一-周五（美股收盘后4小时，确保 yfinance 数据已更新）
   workflow_dispatch:  # 支持手动触发
 
 permissions:

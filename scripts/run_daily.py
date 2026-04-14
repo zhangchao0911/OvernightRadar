@@ -471,6 +471,31 @@ def run_daily(output_dir: str = "data/results"):
         print("ERROR: 无美股数据", file=sys.stderr)
         return None
 
+    # ─── 1.5 检查数据新鲜度 ───────────────────────────────────
+    # 确认 yfinance 返回的最新数据是最近一个交易日，而非更早的数据
+    now_et = datetime.now(timezone(timedelta(hours=-4)))  # 美东时间
+    latest_date = None
+    for ticker, df in us_data.items():
+        if not df.empty:
+            last_date = df.index[-1]
+            if latest_date is None or last_date > latest_date:
+                latest_date = last_date
+
+    if latest_date is not None:
+        # yfinance 返回带时区的日期，统一转 date 比较
+        latest_day = latest_date.date() if hasattr(latest_date, 'date') else latest_date
+        today_et = now_et.date()
+        # 允许最新数据是今天或上周五（周末情况）
+        days_behind = (today_et - latest_day).days
+        if days_behind > 3:
+            print(
+                f"WARNING: yfinance 数据已过时 {days_behind} 天 "
+                f"(最新={latest_day}, 今天ET={today_et})",
+                file=sys.stderr,
+            )
+        else:
+            print(f"数据新鲜度检查通过: 最新数据日期={latest_day}")
+
     # 使用当天日期作为报告日期（北京时间）
     report_date = datetime.now(BJT).strftime("%Y-%m-%d")
 
