@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>市场观察表 · 隔夜雷达</title>
-  <link rel="stylesheet" href="/src/style.css">
+  <link rel="stylesheet" href="src/style.css">
 
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZZ6E4WBLQ"></script>
@@ -30,17 +30,34 @@
   <!-- ─── 底部 Tab 导航 ────────────────── -->
   <nav id="tab-nav" class="tab-nav" style="display:none">
     <button class="tab-item active" data-view="heatmap">
-      <span class="tab-icon">🌐</span>
+      <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <path d="M3 14h7v7H3z"></path>
+      </svg>
       <span class="tab-label">市场观察</span>
     </button>
     <button class="tab-item" data-view="radar">
-      <span class="tab-icon">📡</span>
+      <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path>
+        <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+        <path d="M12 2v4"></path>
+        <path d="M12 18v4"></path>
+        <path d="M4.93 4.93l2.83 2.83"></path>
+        <path d="M16.24 16.24l2.83 2.83"></path>
+        <path d="M2 12h4"></path>
+        <path d="M18 12h4"></path>
+        <path d="M4.93 19.07l2.83-2.83"></path>
+        <path d="M16.24 7.76l2.83-2.83"></path>
+      </svg>
       <span class="tab-label">隔夜雷达</span>
     </button>
   </nav>
 
   <!-- ─── 加载/错误状态 ────────────────── -->
   <div id="loading" class="loading">
+    <div class="loading-spinner"></div>
     <p>正在加载市场数据...</p>
   </div>
 
@@ -48,6 +65,6 @@
     <p>数据加载失败，请稍后重试。</p>
   </div>
 
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
