@@ -133,7 +133,7 @@ function formatUpdateTime(isoString) {
  * @param {string} activeTab - 当前激活的 tab key
  * @returns {string} HTML string
  */
-function renderRadarTabs(activeTab = 'signals') {
+function renderRadarTabs(activeTab = 'sectors') {
   // 信号图标（铃铛）- 金色 #F59E0B
   const signalsIcon = `
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -153,8 +153,8 @@ function renderRadarTabs(activeTab = 'signals') {
   `;
 
   const tabs = [
-    { key: 'signals', icon: signalsIcon, label: '信号' },
     { key: 'sectors', icon: sectorsIcon, label: '板块' },
+    { key: 'signals', icon: signalsIcon, label: '信号' },
   ];
 
   return `
