@@ -6,7 +6,10 @@ import json
 import os
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+
+BJT = timezone(timedelta(hours=8))
 
 import numpy as np
 import pandas as pd
@@ -430,9 +433,8 @@ def run_daily(output_dir: str = "data/results"):
         print("ERROR: 无美股数据", file=sys.stderr)
         return None
 
-    # 确定报告日期：最近的美股交易日
-    latest_dates = [df.index[-1] for df in us_data.values()]
-    report_date = max(latest_dates).strftime("%Y-%m-%d")
+    # 使用当天日期作为报告日期（北京时间）
+    report_date = datetime.now(BJT).strftime("%Y-%m-%d")
 
     # 检查今天是否已经生成过
     output_path = os.path.join(output_dir, f"{report_date}.json")
@@ -530,7 +532,7 @@ def run_daily(output_dir: str = "data/results"):
         "market_indices": market_indices,
         "market_summary": build_market_summary(sectors),
         "sectors": sectors,
-        "updated_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00"),
+        "updated_at": datetime.now(BJT).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
     }
 
     # ─── 7. 输出 JSON ────────────────────────────────────

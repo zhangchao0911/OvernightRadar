@@ -11,6 +11,16 @@ function formatChange(value) {
   return `${sign}${value.toFixed(2)}%`;
 }
 
+function formatUpdateTime(isoString) {
+  if (!isoString) return '';
+  const match = isoString.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):/);
+  if (match) {
+    const [, year, month, day, hours, minutes] = match;
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
+  return isoString;
+}
+
 /**
  * 渲染顶部 Tab 导航（信号/板块/新闻）
  * @param {string} activeTab - 当前激活的 tab key
@@ -129,7 +139,7 @@ export async function renderRadarView(container, header, initialTab = 'sectors')
     <h1 class="title">隔夜雷达</h1>
     <p class="slogan">昨夜美股异动，今日A股看点</p>
     <div class="market-indices">${indicesHtml}</div>
-    <p class="date">${report.market_summary} · ${report.date} ${report.weekday}</p>
+    <p class="date">${report.market_summary} · ${formatUpdateTime(report.updated_at)}</p>
   `;
 
   // 根据当前 tab 渲染内容

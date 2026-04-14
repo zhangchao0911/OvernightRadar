@@ -11,7 +11,9 @@ import json
 import os
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+BJT = timezone(timedelta(hours=8))
 
 import requests
 import yfinance as yf
@@ -329,8 +331,8 @@ def build_output(etfs: list) -> dict:
         }
 
     return {
-        "date": datetime.now().strftime("%Y-%m-%d"),
-        "updated_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00"),
+        "date": datetime.now(BJT).strftime("%Y-%m-%d"),
+        "updated_at": datetime.now(BJT).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
         "total_etfs": len(etfs),
         "groups": groups,
     }

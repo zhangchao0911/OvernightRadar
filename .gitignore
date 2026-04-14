@@ -25,10 +25,8 @@ docs/*
 # Tests (not needed for deployment)
 tests/
 
-# Data (keep structure, ignore content except .gitkeep)
-data/results/*.json
+# Data structure
 !data/results/.gitkeep
-data/watchlist/*.json
 !data/watchlist/.gitkeep
 skills-lock.json
 .worktrees
