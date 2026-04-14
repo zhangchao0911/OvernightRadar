@@ -1071,15 +1071,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-accent);
 }
 
-/* ─── Empty States ─────────────────────────────────── */
-
-.empty-state {
-  text-align: center;
-  padding: var(--spacing-12) var(--spacing-4);
-  color: var(--color-muted);
-  font-size: var(--font-size-base);
-}
-
 /* ─── Error States ─────────────────────────────────── */
 
 .error {

@@ -26,7 +26,7 @@ export function renderIndicators(container, indicators, activeKey, onChange) {
       if (key === currentActive) return;
 
       currentActive = key;
-      container.querySelectorAll('.wl-tab').forEach(t => t.classList.remove('active'));
+      container.querySelectorAll('.wl-indicator-btn').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
 
       // 更新说明文字

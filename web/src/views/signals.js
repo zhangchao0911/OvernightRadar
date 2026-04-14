@@ -2,9 +2,8 @@
  * 交易信号视图 — 显示板块突破、趋势反转、异常波动等信号
  */
 
-// 组件导入（Phase 4 创建）
+// 组件导入
 import { renderSignalCard } from '../components/signal-card.js';
-import { renderStatsPanel } from '../components/stats-panel.js';
 
 // 数据导入（需要在 data.js 中添加）
 import { fetchSignals, fetchSignalHistory } from '../data.js';

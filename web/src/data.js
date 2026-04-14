@@ -74,7 +74,10 @@ export async function fetchSignals(filters = {}) {
 
     // 应用过滤器
     if (filters.direction && filters.direction !== 'all') {
-      signals = signals.filter(s => s.direction === filters.direction || s.direction === filters.direction);
+      // 支持中文方向值（利多/利空）和英文方向值（bullish/bearish）
+      const directionMap = { 'bullish': '利多', 'bearish': '利空' };
+      const targetDir = directionMap[filters.direction] || filters.direction;
+      signals = signals.filter(s => s.direction === targetDir);
     }
     if (filters.confidence && filters.confidence !== 'all') {
       signals = signals.filter(s => {
