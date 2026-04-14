@@ -4,34 +4,21 @@
 
 /**
  * 根据指标值返回颜色。
- * 美股惯例：绿涨红跌。A股惯例：红涨绿跌。
+ * 统一使用中国习惯：红涨绿跌
  */
 export function getColor(value, isCN = false) {
-  if (value === null || value === undefined || isNaN(value)) return '#e8e8e8';
+  if (value === null || value === undefined || isNaN(value)) return '#334155';
 
-  if (isCN) {
-    // A股: 红涨绿跌
-    if (value >= 5) return '#d32f2f';
-    if (value >= 2) return '#e57373';
-    if (value >= 0.5) return '#ffcdd2';
-    if (value > 0) return '#ef9a9a';
-    if (value === 0) return '#e8e8e8';
-    if (value > -0.5) return '#c8e6c9';
-    if (value > -2) return '#81c784';
-    if (value > -5) return '#3ba53b';
-    return '#1b7a1b';
-  } else {
-    // 美股: 绿涨红跌
-    if (value >= 5) return '#1b7a1b';
-    if (value >= 2) return '#3ba53b';
-    if (value >= 0.5) return '#81c784';
-    if (value > 0) return '#c8e6c9';
-    if (value === 0) return '#e8e8e8';
-    if (value > -0.5) return '#ffcdd2';
-    if (value > -2) return '#e57373';
-    if (value > -5) return '#d32f2f';
-    return '#b71c1c';
-  }
+  // 统一红涨绿跌
+  if (value >= 5) return '#d32f2f';
+  if (value >= 2) return '#e57373';
+  if (value >= 0.5) return '#ffcdd2';
+  if (value > 0) return '#ef9a9a';
+  if (value === 0) return '#334155';
+  if (value > -0.5) return '#c8e6c9';
+  if (value > -2) return '#81c784';
+  if (value > -5) return '#3ba53b';
+  return '#1b7a1b';
 }
 
 export function getIndicatorValue(etf, indicatorKey) {
@@ -66,8 +53,9 @@ export function renderBlock(etf, indicatorKey, isCN = false) {
     ? '<span class="wl-cn-badge" title="有A股映射">A</span>'
     : '';
 
+  const cnClass = isCN ? ' cn' : '';
   return `
-    <div class="wl-block" data-code="${code}" style="background-color: ${bgColor}">
+    <div class="wl-block${cnClass}" data-code="${code}" style="background-color: ${bgColor}">
       <span class="wl-block-ticker">${code}</span>
       <span class="wl-block-name">${name}</span>
       <span class="wl-block-value">${displayValue}</span>
