@@ -301,7 +301,10 @@ def fetch_us_data(tickers: list, days: int = 150) -> dict:
     """
     import yfinance as yf
 
-    end_date = datetime.now()
+    # end_date 多推 1 天，因为 yfinance 的 end 参数是开区间（不包含当天）
+    # CI runner 是 UTC 时区，datetime.now() 可能是美股当天而非次日，
+    # 导致最新交易日数据被排除
+    end_date = datetime.now() + timedelta(days=1)
     start_date = end_date - timedelta(days=int(days * 1.8))
 
     raw = yf.download(
