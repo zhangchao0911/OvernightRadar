@@ -430,9 +430,8 @@ def run_daily(output_dir: str = "data/results"):
         print("ERROR: 无美股数据", file=sys.stderr)
         return None
 
-    # 确定报告日期：最近的美股交易日
-    latest_dates = [df.index[-1] for df in us_data.values()]
-    report_date = max(latest_dates).strftime("%Y-%m-%d")
+    # 使用当天日期作为报告日期（北京时间）
+    report_date = datetime.now().strftime("%Y-%m-%d")
 
     # 检查今天是否已经生成过
     output_path = os.path.join(output_dir, f"{report_date}.json")
