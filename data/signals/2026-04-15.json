@@ -1,0 +1,82 @@
+{
+  "date": "2026-04-15",
+  "generated_at": "2026-04-15T01:52:54.905933",
+  "total": 3,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 5,
+    "processed_count": 5,
+    "final_count": 3,
+    "avg_score": 46.8,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "美伊谈判预期重燃，市场风险偏好回升",
+      "direction": "利多",
+      "sectors": [
+        "大盘指数",
+        "科技",
+        "非必需消费品"
+      ],
+      "action": "若大盘指数（如SPY/QQQ）回调至5日均线附近，可分批买入或增持。若高开>1.5%则不宜追高，等待盘中回落机会。",
+      "reason": "多条新闻（4,6,12,19）显示美伊谈判重启概率高，地缘政治紧张局势有望缓和，这是驱动市场反弹的核心逻辑。Cramer（3）也指出市场最担忧的极端情况未发生，恐慌性抛售可能错失机会。此信号针对整体市场情绪转向乐观。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 51,
+      "level": "中",
+      "score_detail": {
+        "importance": 8,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "霍尔木兹海峡航运受阻，能源运输成本飙升",
+      "direction": "利多",
+      "sectors": [
+        "能源运输",
+        "国防军工",
+        "替代能源"
+      ],
+      "action": "关注原油运输公司（如TNK， STNG）及国防承包商（如LMT， NOC），若其股价未充分反映事件（新闻1,13），可逢低布局。同时，航空（因燃油成本）和卡车运输（新闻10）板块短期承压，可考虑对冲或规避。",
+      "reason": "美国驱逐舰拦截伊朗油轮及霍尔木兹海峡船只被转向（1,13），直接威胁全球关键石油咽喉要道，推高航运风险溢价和保险成本，利好能源运输及国防板块。柴油支出创纪录（10）印证了运输成本上升。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    },
+    {
+      "title": "地缘冲突引发多重经济冲击，IMF下调增长预期",
+      "direction": "利空",
+      "sectors": [
+        "欧洲市场",
+        "基础材料",
+        "农业"
+      ],
+      "action": "规避或减仓对中东局势和全球增长敏感的板块，如欧洲股市ETF（如VGK）、化肥及农业股。可关注这些板块中因恐慌超跌带来的反弹机会，但应以短线交易为主。",
+      "reason": "IMF因战争影响大幅下调中东、英国及全球增长预期（8,11,15），并警告恶化风险。同时，化肥短缺成为发展中国家关键担忧（18）。这些表明冲突已产生广泛的负面经济外溢效应，利空相关地区和周期性板块。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}

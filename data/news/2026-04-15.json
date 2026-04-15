@@ -1,8 +1,19 @@
 {
-  "date": "2026-04-14",
-  "fetched_at": "2026-04-14T23:59:52.775355",
+  "date": "2026-04-15",
+  "fetched_at": "2026-04-15T01:52:28.850278",
   "total": 30,
   "news": [
+    {
+      "category": "business",
+      "datetime": 1776210960,
+      "headline": "US destroyer interdicts two oil tankers attempting to leave Iran, official says - Reuters",
+      "id": 7796053,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US destroyer interdicts two oil tankers attempting to leave Iran, official says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQS2ZscTN1MzFhXzZic2ZiTjRrSlpEX2VBaE83cjAzYkQ4a2ZHT25UOTFOZWhTb2JMS0pLXzRTNHRjQmprSzhtOHhKcWRkNGx0SS0xSVpvbVYtVm8wN0dudWRPTU50MFF0ZkFoT3UxcklYZmVERHpGTkdWclJMVDc0ZzFhT3czTUJkdXExbDFPQ2Jib3hyT0NuWGt6SDJEQnlubVZHaU10bERHTWRySTNjTTZVd1pfLTFHQmRSZm9lLVYzUUZFU3pHdQ?oc=5"
+    },
     {
       "category": "business",
       "datetime": 1776207694,
@@ -192,6 +203,17 @@
     },
     {
       "category": "business",
+      "datetime": 1776183552,
+      "headline": "UK stocks rise on hopes of US-Iran peace talks - Reuters",
+      "id": 7795846,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "UK stocks rise on hopes of US-Iran peace talks  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPemNCWkw1bkFMaFNSdmZLRnE3ZGVCekdGSlplRWxXaFdEQzlWVFl1Z3hMV0g0bmloNjBOWHQyMngydG5PSHFTcENSYmRSZlJHZjRKTHNjN0ZkRkYyQ293NkRPUGFWcFRPZ05zUWtvalhmSEpheVFRUHRLeENCOFZ6Z3dOaEpVZlpYNFVYdGVYbU1kQjA2MVBRXzZPTzdBRVZ0eWdSNDdxdFczcE9jZVE?oc=5"
+    },
+    {
+      "category": "business",
       "datetime": 1776182980,
       "headline": "What a United-American merger would mean, from antitrust hurdles to airfare",
       "id": 7794263,
@@ -310,28 +332,6 @@
       "source": "Reuters",
       "summary": "Aid groups use land routes to deliver humanitarian relief to Iran  Reuters",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQbGNXbHN0Yzh5bUhDMnZneDM5cUNpR0ljcVRreGlXcFRiZGw2SkE5Zmp6bHhzSVg4T2NyTlh4dl8xMlFlY09TVkh6RmotcTJPUW5VRjVrVmlTZ2pic2Q1VVZwZU5hRGczOG1rRkVWUzdFS1ZpcHNwZW0weU93REM5cnNhS0lDc0NpeUQ2MC1XVzliZm5HM0hyTFFfOUtYTkxtbHAtOGVhdFV1ZHFGUmMxWmtfSQ?oc=5"
-    },
-    {
-      "category": "top news",
-      "datetime": 1776168061,
-      "headline": "The top 10 large U.S. cities for recent college graduates in 2026, according to new report—3 are in Texas",
-      "id": 7793365,
-      "image": "https://image.cnbcfm.com/api/v1/image/108290598-1776100844183-gettyimages-2199311424-jjl09129.jpeg?v=1776100860&w=1920&h=1080",
-      "related": "",
-      "source": "CNBC",
-      "summary": "New York City and LA didn't make the list, published by Glassdoor and Redfin on April 14.",
-      "url": "https://www.cnbc.com/2026/04/14/top-large-us-cities-for-recent-college-grads-in-2026.html"
-    },
-    {
-      "category": "business",
-      "datetime": 1776165463,
-      "headline": "Iran war could hit India's car production, auto body says - Reuters",
-      "id": 7794587,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Iran war could hit India's car production, auto body says  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOelJGMXA5c1FqeFFvVU5DajFCNldZRFVlTGxRQnlUOTFodjFUYzRIZWdxblhUQTU4dkxJU0tNV1IxZWc0aFBFbnVaeWJ5OVZnZ3d4Y29mOHdKVkZWMUFoMUVMQ29tZWt1YXdRU2tlMWg3TWkyRTlyM1l2LWxXUzVBOWtCbE1hMUVpaTMtNDZHT1dlMkNXY1VYeEV6TzJ4U19MNERyVkl3?oc=5"
     }
   ]
 }
