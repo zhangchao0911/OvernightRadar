@@ -1,27 +1,71 @@
 {
   "date": "2026-04-15",
-  "generated_at": "2026-04-15T14:41:28.802567",
-  "total": 1,
+  "generated_at": "2026-04-15T14:56:47.779670",
+  "total": 3,
   "metadata": {
     "news_count": 30,
-    "raw_count": 4,
-    "processed_count": 4,
-    "final_count": 1,
-    "avg_score": 45.2,
+    "raw_count": 5,
+    "processed_count": 5,
+    "final_count": 3,
+    "avg_score": 48.2,
     "min_score": 50,
     "ai_provider": "deepseek"
   },
   "signals": [
     {
-      "title": "市场押注伊朗战争结束，风险情绪回归",
+      "title": "市场押注伊朗战争结束，风险偏好回升",
       "direction": "利多",
       "sectors": [
         "大盘指数",
         "科技",
         "非必需消费品"
       ],
-      "action": "若市场回调（如标普500指数跌至关键支撑位），可分批买入超跌的科技成长股及受战争担忧压制的航空、旅游股。",
-      "reason": "多条新闻（17， 7， 14）显示市场正消化伊朗战争结束的预期，美元战争溢价消退。这将缓解能源价格压力，提振整体风险偏好，前期受地缘政治压制的板块有望反弹。",
+      "action": "若市场指数（如SPY/QQQ）回调至短期均线（如5日线）附近，可分批买入或增持。若直接高开高走，避免追高。",
+      "reason": "新闻17显示市场正消化战争结束的预期，这将移除重大的地缘政治风险溢价，提振整体风险情绪。结合新闻1提到的市场处于超买状态，最佳策略是等待回调介入，而非追高。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 51,
+      "level": "中",
+      "score_detail": {
+        "importance": 8,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "伊朗冲突缓解，能源危机与美元避险溢价消退",
+      "direction": "利空",
+      "sectors": [
+        "能源",
+        "美元",
+        "公用事业"
+      ],
+      "action": "考虑减仓或避开传统能源股（如XLE）。做多受高能源成本打击的板块（如航空、工业），如UAL、DAL。",
+      "reason": "新闻6、7、14、17、18均指向伊朗战争可能结束或影响缓解，这将导致因冲突而飙升的能源价格（新闻6）和美元避险溢价（新闻14）回落。能源板块将承压，而航空（新闻8）、工业等受害于高能源成本的板块将受益。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    },
+    {
+      "title": "奢侈品与旅游板块受地缘政治与需求双重打击",
+      "direction": "利空",
+      "sectors": [
+        "奢侈品",
+        "旅游酒店",
+        "航空"
+      ],
+      "action": "对欧洲奢侈品股（如Hermes, Kering）保持谨慎，暂不抄底。关注迪拜旅游相关资产（如酒店、航空）因Burj Al Arab关闭（新闻3）可能带来的短期压力。",
+      "reason": "新闻19指出伊朗战争打击了奢侈品股的复苏。新闻3显示迪拜标志性酒店因旅游衰退而长期关闭，印证了高端旅游消费的疲软。这两个板块面临地缘政治和需求放缓的双重利空。",
       "is_macro": false,
       "under_priced": false,
       "clear_action": false,
