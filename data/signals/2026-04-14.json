@@ -1,17 +1,40 @@
 {
   "date": "2026-04-14",
-  "generated_at": "2026-04-14T23:49:41.499449",
-  "total": 3,
+  "generated_at": "2026-04-15T00:00:11.712986",
+  "total": 2,
   "metadata": {
     "news_count": 30,
-    "raw_count": 5,
-    "processed_count": 5,
-    "final_count": 3,
-    "avg_score": 47.8,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 49.8,
     "min_score": 50,
     "ai_provider": "deepseek"
   },
   "signals": [
+    {
+      "title": "IMF下调全球及地区增长预期，冲突引发大宗商品短缺",
+      "direction": "利空",
+      "sectors": [
+        "国际敞口大的公司",
+        "欧洲市场（尤其英国）",
+        "基础材料/化肥",
+        "工业"
+      ],
+      "action": "对在欧洲及中东有重大业务的公司（如部分工业、金融股）保持谨慎，避免抄底。可关注特定受益板块，如澳大利亚绿色钢铁（新闻13，主题性机会）和北美化肥生产商（可能受益于全球短缺，新闻17）。",
+      "reason": "IMF大幅下调中东（新闻7）、英国（新闻14）及全球（新闻10）增长预期，战争加剧通胀并扰乱供应链。化肥短缺（新闻17）威胁农业和食品价格，利空全球经济敏感型板块。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 60,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    },
     {
       "title": "美伊谈判预期重燃，市场风险偏好回升",
       "direction": "利多",
@@ -20,8 +43,8 @@
         "科技股",
         "非必需消费品"
       ],
-      "action": "若市场高开幅度<1.5%，可考虑分批建仓或加仓；若高开>2%则不宜追高，等待盘中回调机会。",
-      "reason": "多条新闻（3,5,11,19）显示美伊谈判重启概率高，地缘政治紧张局势有望缓和，这是驱动华尔街反弹的核心利好。Cramer（2）也指出市场最担忧的‘最坏情况’未发生，建议不要离场。此信号旨在捕捉因风险情绪改善带来的普涨机会。",
+      "action": "若市场高开幅度<1.5%，可考虑增持风险资产；若已大幅上涨（如SPY涨幅>3%），则不宜追高，等待回调机会。",
+      "reason": "多条新闻（3,5,11,19）显示美伊谈判重启概率高，地缘政治紧张局势有望缓和，这是驱动近期市场反弹的核心动力。Cramer（新闻2）也指出市场最担忧的‘最坏情况’未发生，支持风险偏好。",
       "is_macro": false,
       "under_priced": false,
       "clear_action": true,
@@ -32,50 +55,6 @@
         "reach": 20,
         "pricing": 5,
         "clarity": 18
-      }
-    },
-    {
-      "title": "地缘冲突推高能源成本，航空与运输业承压",
-      "direction": "利空",
-      "sectors": [
-        "航空",
-        "运输",
-        "物流"
-      ],
-      "action": "航空股（如UAL, AAL, DAL）若因冲突缓和反弹，可视为减仓或对冲机会；关注柴油成本对卡车运输公司（如JBHT, LSTR）财报的潜在负面影响。",
-      "reason": "新闻1显示航空公司因冲突取消航班，新闻9指出美国卡车司机柴油支出创纪录。地缘冲突直接推高了运营成本并扰乱供应链，即便谈判进行，短期内高成本压力仍存，利空相关板块利润率。",
-      "is_macro": false,
-      "under_priced": false,
-      "clear_action": false,
-      "score": 50,
-      "level": "中",
-      "score_detail": {
-        "importance": 15,
-        "reach": 20,
-        "pricing": 5,
-        "clarity": 10
-      }
-    },
-    {
-      "title": "IMF下调全球及地区增长预期，警惕宏观逆风",
-      "direction": "利空",
-      "sectors": [
-        "国际业务敞口大的公司",
-        "周期性板块",
-        "金融"
-      ],
-      "action": "对在欧洲、中东及英国业务占比较高的跨国公司保持谨慎；在投资组合中增加防御性板块（如必需消费品、公用事业）的配置以对冲增长放缓风险。",
-      "reason": "新闻7、10、14指出IMF因战争影响下调了中东、全球及英国的增长预期。这构成了广泛的宏观利空背景，可能压制企业盈利前景，尤其对全球经济敏感型板块构成压力。",
-      "is_macro": false,
-      "under_priced": false,
-      "clear_action": false,
-      "score": 50,
-      "level": "中",
-      "score_detail": {
-        "importance": 15,
-        "reach": 20,
-        "pricing": 5,
-        "clarity": 10
       }
     }
   ]
