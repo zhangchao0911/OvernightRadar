@@ -7,18 +7,11 @@
  * 统一使用中国习惯：红涨绿跌
  */
 export function getColor(value, isCN = false) {
-  if (value === null || value === undefined || isNaN(value)) return '#334155';
+  if (value === null || value === undefined || isNaN(value) || value === 0) return '#334155';
 
-  // 统一红涨绿跌
-  if (value >= 5) return '#d32f2f';
-  if (value >= 2) return '#e57373';
-  if (value >= 0.5) return '#ffcdd2';
-  if (value > 0) return '#ef9a9a';
-  if (value === 0) return '#334155';
-  if (value > -0.5) return '#c8e6c9';
-  if (value > -2) return '#81c784';
-  if (value > -5) return '#3ba53b';
-  return '#1b7a1b';
+  // 统一红涨绿跌，固定颜色不区分深浅
+  if (value > 0) return '#d32f2f';
+  return '#2e7d32';
 }
 
 export function getIndicatorValue(etf, indicatorKey) {

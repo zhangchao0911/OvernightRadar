@@ -39,6 +39,8 @@ let currentIndicator = 'change_pct';
 let currentMarket = 'us'; // 'us' or 'cn'
 let usWatchlistData = null;
 let cnWatchlistData = null;
+let cnRefreshTimer = null; // A股盘中自动刷新定时器
+const CN_REFRESH_INTERVAL = 10 * 60 * 1000; // 10 分钟
 
 // ─── 市场切换器渲染 ───────────────────────────────────────
 function renderMarketSwitcher(container, currentMarket, onSwitch) {
@@ -210,6 +212,27 @@ async function renderMarketView(container, header, market, benchmark = null) {
 
   // 初始化详情面板
   showDetail(null, null);
+
+  // A股盘中自动刷新：每10分钟重新拉取数据
+  if (cnRefreshTimer) clearInterval(cnRefreshTimer);
+  if (isCN) {
+    cnRefreshTimer = setInterval(async () => {
+      console.log('[MarketView] A股自动刷新...');
+      cnWatchlistData = await fetchCNWatchlistData();
+      if (cnWatchlistData && currentMarket === 'cn') {
+        const heatmapEl = document.getElementById('wl-heatmap');
+        if (heatmapEl) {
+          renderHeatmapContent(heatmapEl, cnWatchlistData.groups, currentIndicator, true);
+        }
+        // 更新时间显示
+        const timeEl = document.querySelector('.wl-header-top .date');
+        if (timeEl) {
+          const updateTime = formatUpdateTime(cnWatchlistData.updated_at);
+          timeEl.textContent = `更新时间: ${updateTime || cnWatchlistData.date}`;
+        }
+      }
+    }, CN_REFRESH_INTERVAL);
+  }
 
   console.log('[MarketView] Render complete for market:', market);
 }

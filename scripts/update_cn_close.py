@@ -140,15 +140,11 @@ def update_cn_watchlist(today: str) -> bool:
     sys.path.insert(0, os.path.dirname(__file__))
     from fetch_cn_watchlist import run_fetch
 
-    # 删除旧文件，允许重新生成
+    # 重新生成 A 股市场观察数据
     output_dir = os.path.join(os.path.dirname(__file__), "..", "data", "cn_watchlist")
-    old_path = os.path.join(output_dir, f"{today}.json")
-    if os.path.exists(old_path):
-        os.remove(old_path)
-        print(f"删除旧文件: {old_path}")
 
     print("重新生成 A 股市场观察数据...")
-    result = run_fetch(output_dir=output_dir, benchmark_key="hs300")
+    result = run_fetch(output_dir=output_dir, benchmark_key="hs300", force=True)
 
     if result:
         print(f"OK: cn_watchlist/{today}.json ({result.get('total_sectors', 0)} sectors)")

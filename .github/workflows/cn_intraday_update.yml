@@ -1,0 +1,72 @@
+name: A-Stock Intraday Update
+
+on:
+  schedule:
+    # 每10分钟运行一次，UTC 1:00-7:50 = BJT 9:00-15:50
+    # 通过 step 中的时间检查限定为 BJT 9:30-15:30
+    - cron: '*/10 1-7 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check market hours
+        run: |
+          BJT_HOUR=$(TZ='Asia/Shanghai' date +%H)
+          BJT_MIN=$(TZ='Asia/Shanghai' date +%M)
+          BJT_TIME=$((10#$BJT_HOUR * 60 + 10#$BJT_MIN))
+          # BJT 9:30 = 570, BJT 15:30 = 930
+          if [ "$BJT_TIME" -lt 570 ] || [ "$BJT_TIME" -gt 930 ]; then
+            echo "SKIP: outside market hours (BJT ${BJT_HOUR}:${BJT_MIN})"
+            echo "SKIP=true" >> $GITHUB_ENV
+          else
+            echo "Market hours OK (BJT ${BJT_HOUR}:${BJT_MIN})"
+          fi
+
+      - uses: actions/checkout@v4
+        if: env.SKIP != 'true'
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        if: env.SKIP != 'true'
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+        if: env.SKIP != 'true'
+
+      - name: Fetch CN watchlist (force)
+        if: env.SKIP != 'true'
+        run: python scripts/fetch_cn_watchlist.py --force
+
+      - name: Commit data to main
+        if: env.SKIP != 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/cn_watchlist/
+          git diff --staged --quiet || git commit -m "data: A股盘中更新 $(TZ='Asia/Shanghai' date +%H:%M)"
+          git push
+
+      # 轻量部署：只更新数据到 gh-pages，不重新构建前端
+      - name: Deploy data to GitHub Pages
+        if: env.SKIP != 'true'
+        run: |
+          # 先保存生成的数据到临时目录（checkout gh-pages 后工作目录会被替换）
+          cp -r data/cn_watchlist /tmp/cn_watchlist_data
+          git fetch origin gh-pages
+          git checkout gh-pages
+          mkdir -p data/cn_watchlist
+          cp -r /tmp/cn_watchlist_data/* ./data/cn_watchlist/
+          git add data/cn_watchlist/
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git diff --staged --quiet || git commit -m "data: A股盘中数据部署 $(TZ='Asia/Shanghai' date +%H:%M)"
+          git push origin gh-pages
+          git checkout main
