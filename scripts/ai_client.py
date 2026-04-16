@@ -151,7 +151,7 @@ class AIClient:
         }
 
         try:
-            resp = requests.post(url, headers=headers, json=data, timeout=30)
+            resp = requests.post(url, headers=headers, json=data, timeout=120)
             resp.raise_for_status()
             result = resp.json()
 
@@ -186,7 +186,7 @@ class AIClient:
         }
 
         try:
-            resp = requests.post(url, headers=headers, json=data, timeout=30)
+            resp = requests.post(url, headers=headers, json=data, timeout=120)
             resp.raise_for_status()
             result = resp.json()
 
@@ -221,7 +221,7 @@ class AIClient:
         }
 
         try:
-            resp = requests.post(url, headers=headers, json=data, timeout=30)
+            resp = requests.post(url, headers=headers, json=data, timeout=120)
             resp.raise_for_status()
             result = resp.json()
 
