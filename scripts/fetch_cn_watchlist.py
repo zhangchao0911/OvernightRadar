@@ -195,7 +195,11 @@ def fetch_etf_history(code: str, period_days: int = 150) -> pd.Series:
                 )
             finally:
                 requests.Session.get = original_get
-            if df is None or df.empty:
+            if df is None:
+                print(f"    [hist] {code}: API 返回 None")
+                return pd.Series()
+            if df.empty:
+                print(f"    [hist] {code}: API 返回空 DataFrame")
                 return pd.Series()
 
             # 列名映射
@@ -208,16 +212,21 @@ def fetch_etf_history(code: str, period_days: int = 150) -> pd.Series:
             df = df.rename(columns=col_map)
 
             if "date" not in df.columns or "close" not in df.columns:
+                print(f"    [hist] {code}: 列名不匹配 {list(df.columns)}")
                 return pd.Series()
 
             df['date'] = pd.to_datetime(df['date'])
             df = df.sort_values('date')
 
+            print(f"    [hist] {code}: {len(df)} 条记录")
             return df.set_index('date')['close']
 
         except Exception as e:
             if retry < MAX_RETRIES - 1:
+                print(f"    [hist] {code}: 重试 {retry + 1}/{MAX_RETRIES} - {e}")
+                time.sleep(1)
                 continue
+            print(f"    [hist] {code}: 全部重试失败 - {e}")
             return pd.Series()
 
     return pd.Series()
