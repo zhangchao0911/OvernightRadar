@@ -25,7 +25,8 @@ from cn_sector_config import (
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "cn_watchlist")
 HISTORY_POINTS = 30
 REL_PERIODS = [5, 20, 60, 120]
-MAX_RETRIES = 3
+MAX_RETRIES = 5
+ETF_SPOT_TIMEOUT = 60  # fund_etf_spot_em 超时（秒），批量获取62只ETF数据量大
 
 
 # ─── 基准指数数据获取 ─────────────────────────────────────────────
@@ -97,7 +98,17 @@ def fetch_etf_realtime(etf_codes: list) -> dict:
 
     for retry in range(MAX_RETRIES):
         try:
-            df = ak.fund_etf_spot_em()
+            # 增加 requests 超时，AkShare 内部用 requests 但不暴露 timeout 参数
+            import requests
+            original_get = requests.Session.get
+            def _patched_get(self, url, **kwargs):
+                kwargs.setdefault('timeout', ETF_SPOT_TIMEOUT)
+                return original_get(self, url, **kwargs)
+            requests.Session.get = _patched_get
+            try:
+                df = ak.fund_etf_spot_em()
+            finally:
+                requests.Session.get = original_get
             if df is None or df.empty:
                 print("  WARNING: ETF 行情返回空数据")
                 continue
@@ -145,7 +156,7 @@ def fetch_etf_realtime(etf_codes: list) -> dict:
         except Exception as e:
             if retry < MAX_RETRIES - 1:
                 print(f"  重试 {retry + 1}/{MAX_RETRIES}: {e}")
-                time.sleep(2)
+                time.sleep(5)
                 continue
             print(f"  ERROR: 获取 ETF 行情失败 - {e}")
             return {}
