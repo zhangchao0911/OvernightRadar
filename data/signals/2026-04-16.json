@@ -1,0 +1,59 @@
+{
+  "date": "2026-04-16",
+  "generated_at": "2026-04-16T13:08:38.802841",
+  "total": 2,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 47.5,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "国防开支增加引发“大炮与黄油”权衡，关注政府支出方向",
+      "direction": "利多",
+      "sectors": [
+        "国防军工",
+        "工业"
+      ],
+      "action": "关注主要国防承包商（如LMT、RTX、NOC）。若大盘因风险偏好回升而调整，国防股出现回调，则是中长期配置机会。避免追高已大幅上涨的个股。",
+      "reason": "新闻3（IMF警告）指出全球政府增加国防开支（“大炮”），可能挤压其他财政支出（“黄油”）。这种结构性趋势在伊朗战争背景下被强化，长期利好国防板块，但短期可能受市场风格轮动影响。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "伊朗局势缓和预期升温，风险资产受提振",
+      "direction": "利多",
+      "sectors": [
+        "全球股指",
+        "新兴市场",
+        "周期性板块"
+      ],
+      "action": "关注SPY、INDA等ETF，若今日开盘涨幅<1.5%，可考虑日内逢低介入；若高开>2%则避免追高，等待回调。",
+      "reason": "多条新闻（5,7,15,17,18）显示美伊和谈希望上升，美元走软、黄金上涨、印度股市拉升，显示市场风险偏好回升。地缘政治紧张局势缓和是短期最大催化剂，利好全球风险资产。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 51,
+      "level": "中",
+      "score_detail": {
+        "importance": 8,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    }
+  ]
+}
