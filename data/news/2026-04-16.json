@@ -1,6 +1,6 @@
 {
   "date": "2026-04-16",
-  "fetched_at": "2026-04-16T00:30:31.223937",
+  "fetched_at": "2026-04-16T02:00:41.717268",
   "total": 30,
   "news": [
     {
@@ -35,6 +35,17 @@
       "source": "Reuters",
       "summary": "US warns that buyers of Iranian oil could be hit with sanctions  Reuters",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPdkVLU2x6LWQ5V3NfVmpCN0lVYmhqWjNJMUxKZ1l1YWNUTy15bnRIcVdXM1hKUVdiUDl2RFVXeU81MnJHREdlWnRPS3Z2YTQxOTdlQ2VyYUtuT2l2Y1lfcWVjTWNXTGFFa3g4SkIzRmdRS0xzallnOXVSMjhWMEx0N2tsbEx3TFRHWUJWNlRISlJVU1RvckR0eUJUVGVTUnJkX0U5MUpwemhRQVhGYmpKUlhjeWFTVGs?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776290312,
+      "headline": "IMF says Bank of Japan can see through inflationary shock from Iran war - Reuters",
+      "id": 7801190,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "IMF says Bank of Japan can see through inflationary shock from Iran war  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQWGFjLUZlRm5oLWpXTjlQcEZmaXFsMGxwQnBWM0hRUk1yNHppNG9HYUJEUjAyMDFBb3BTQjJLQVotd21lcGJnSnZ4RmZEMFFralQ0NHN6OEtIQ1hRaVB6MkZPZVpxN1MzbVoxLXZJZDh5NV9Mcm1ZOU54ajExa1hwbjNBcUlnYXhDVm12TkJwamdZREloZVNFQnhfbWpteHRmc3N6ZnRzRmpPczRVY3gxZG1SRENsc0ZmblE?oc=5"
     },
     {
       "category": "business",
@@ -90,6 +101,17 @@
       "source": "Reuters",
       "summary": "White House offers no hint of Iran war cost as it seeks military funding surge  Reuters",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOOExveDktZzU5ZDdwZ2pTTFhHTzdSUGluYk1rNHBkZHlweUNyNWZfbWlUS0dJVFVNQ1M1Z2ZXdi16SEhOY3JidUlRZUpHTWU0Si1OQTJkNXd2SWR0bDZpNVNWbUNOSjM1cmUyOGxBbmx3cTE5aGR3Q2EzOFk2YmVBaWNUZXI3YzV4SVd4T1NxSmtkb2xtNTYybGJZUTdoci1RQjEyMk9ZS3NXWUF5RWw4SURXMkVYTWwzaHlTenNkYUFPa2lR?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776279295,
+      "headline": "White House denies U.S. requested ceasefire, says new talks may happen in Pakistan - Reuters",
+      "id": 7801191,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "White House denies U.S. requested ceasefire, says new talks may happen in Pakistan  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPTHZJd2Z1eVA2dk1HZE9fMTkwY2N4aGJMbGpmMVZ4YVgyMnRBSXNNSzBZcWtWZ0dXTWgzWEtnSXlRSUV3TDRXUTRJQXdhWDhtclU0X21YQ0NRRVFuaWRKQ3JaNnQ1bVQwUERUcmVkVHN0bnVqQUpYR3V3N0xQQXVhU1ZzdlBFY1lIblpadWJfREZtNGdyd1JFMkhKek4wSk02VEFvZkVjUUxnaUp2eDAta0ZsWmo1cmRONDl3TXctYVpPVDRLVEpZSXU1bw?oc=5"
     },
     {
       "category": "business",
@@ -310,28 +332,6 @@
       "source": "Reuters",
       "summary": "Iran talks, Lebanon-Israel and Amazon's Globalstar deal  Reuters",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWi1aTW9oRks0bHFvNjR2OHQwU0hXN1J1eGRfTGJiaEV2dUstQVRsd1RTYVRDbFhESjU1VlYyZ3JoOWtkVzlscVFRbk9qQjhDZFJpUUVWTlAyaFVLMDJBYU9PWjE5NlJHZUdPbUVxVFJGd01NVmQzX3g1MzJZeVZyZXcwVHpqV0FCaXFLWGx0bjE0QXZxU1ZXOXV3?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776248101,
-      "headline": "Bank of America is set to report earnings. Here's what to expect",
-      "id": 7798037,
-      "image": "",
-      "related": "",
-      "source": "CNBC",
-      "summary": "Bank of America, the second-largest U.S. bank by assets, has topped expectations for earnings per share for 23 consecutive quarters.",
-      "url": "https://www.cnbc.com/2026/04/15/bank-of-america-bac-earnings-q1-2026.html"
-    },
-    {
-      "category": "business",
-      "datetime": 1776247735,
-      "headline": "Dollar sheds bulk of Iran war premium, but few expect a sharper drop - Reuters",
-      "id": 7798387,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Dollar sheds bulk of Iran war premium, but few expect a sharper drop  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNZTJidVo0bXJCOVY1NGlMUFJ1YlppSHREVFJ4TkxCUFM0eU9VZXJaMjR1ZUFEMDRKcG9oeDFOUmdVSXlDdWcyaFp4X3Q2MnNWckZPbE02NlpmN3VPSFBrc05lUVJOeEl2d0VzdllfUmd6U1RPYzhiZEp3OHRhLXJVbzVvc0FHYVJUTkIxS3hwYTQ1d05uQ0FoYXRwQkhHcmdmWHJjZkJsVFlmdHUzOGxZUg?oc=5"
     }
   ]
 }
