@@ -1,6 +1,227 @@
 {
   "date": "2026-04-16",
-  "fetched_at": "2026-04-16T14:02:39.532729",
-  "total": 0,
-  "news": []
+  "fetched_at": "2026-04-16T14:44:20.944705",
+  "total": 20,
+  "news": [
+    {
+      "category": "business",
+      "datetime": 1776294120,
+      "headline": "China's Q1 economic rebound faces rough seas as Iran war jolts global outlook - Reuters",
+      "id": 7801808,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "China's Q1 economic rebound faces rough seas as Iran war jolts global outlook  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQT0pySGZlMXMzbWl0cTJnbEJqUDFScnpSYkJFMjBNZ1M0Z21MZnFucVlqY1hLVnMwbThKY1VjYy10cklnSzRZWlBGbU9RcnNIaUhUeTNaVm04Zkc5bGJvV3JNUElaaTRDVVladk5YRkRYSmhMbWhnN2R5d2V3MzkwcUpoLWNQU2hTVWJXdDZMWmxkM0F0ZzRoamNEbFdwWlc4M1d4dDlaRExEZlFRcjVmUVNIWVV2dw?oc=5"
+    },
+    {
+      "category": "top news",
+      "datetime": 1776292153,
+      "headline": "Spirit Airlines could liquidate as early as this week, sources say",
+      "id": 7800765,
+      "image": "https://image.cnbcfm.com/api/v1/image/108223095-17625336482025-11-07t163901z_1936349196_rc2prhapk54r_rtrmadp_0_usa-shutdown-air-travel.jpeg?v=1776291257&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "The carrier is facing the added challenge of a spike in the price of fuel. Fuel is airlines' biggest expense after labor.",
+      "url": "https://www.cnbc.com/2026/04/15/spirit-airlines-could-liquidate-as-early-as-this-week-sources-say.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776290784,
+      "headline": "US warns that buyers of Iranian oil could be hit with sanctions - Reuters",
+      "id": 7800243,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US warns that buyers of Iranian oil could be hit with sanctions  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPdkVLU2x6LWQ5V3NfVmpCN0lVYmhqWjNJMUxKZ1l1YWNUTy15bnRIcVdXM1hKUVdiUDl2RFVXeU81MnJHREdlWnRPS3Z2YTQxOTdlQ2VyYUtuT2l2Y1lfcWVjTWNXTGFFa3g4SkIzRmdRS0xzallnOXVSMjhWMEx0N2tsbEx3TFRHWUJWNlRISlJVU1RvckR0eUJUVGVTUnJkX0U5MUpwemhRQVhGYmpKUlhjeWFTVGs?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776290312,
+      "headline": "IMF says Bank of Japan can see through inflationary shock from Iran war - Reuters",
+      "id": 7801190,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "IMF says Bank of Japan can see through inflationary shock from Iran war  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQWGFjLUZlRm5oLWpXTjlQcEZmaXFsMGxwQnBWM0hRUk1yNHppNG9HYUJEUjAyMDFBb3BTQjJLQVotd21lcGJnSnZ4RmZEMFFralQ0NHN6OEtIQ1hRaVB6MkZPZVpxN1MzbVoxLXZJZDh5NV9Mcm1ZOU54ajExa1hwbjNBcUlnYXhDVm12TkJwamdZREloZVNFQnhfbWpteHRmc3N6ZnRzRmpPczRVY3gxZG1SRENsc0ZmblE?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776285161,
+      "headline": "US probes suspicious oil trades made before Trump Iran pivots, source says - Reuters",
+      "id": 7800242,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US probes suspicious oil trades made before Trump Iran pivots, source says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObEFvSkkyTHhwcFNwbTkyQW41S0hJRDFlZko1VTVEY09SNU1MYnFQYVczUXVHWk4zMnExT08yb0hYRi1GanB1azdIQ284NkpOLWlnLXpqa0NheWpILUxibzhCLXdWWW9RTlZTY2czdnotaUYwS3J5QjNJYWVQWF9aZzhrNU1YUTBjWU85SzB3TnAybDJhQzZnaGxzXzlnRmlMYnJLRFZUU3JDX3hWcDRNSlFxc3I1SEVXN2xXS0VwM0lxUGc?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776285021,
+      "headline": "US Senate Republicans block latest bid to rein in Trump Iran war powers - Reuters",
+      "id": 7800035,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US Senate Republicans block latest bid to rein in Trump Iran war powers  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOVjBWMHdBM1ZVMXZXX1c0ekt4ZXFrVG5INXBMYTgwV3dIN1lBc2RGQlh3Mm9VcjExM2c2QlNibE1Nc0JUNzh0eGNYSWhLTktDeEJyempmYmJpVlc4SFU4WE1MbF9lbUpoS0lkZG9OaXktbW41ZEhTQlpMUXQ5b2c0RVF3Ml9Ya0ltYWpDUHA1endIVW0tbllmTkpGMWg0cy13SEowcmJ5bHAwcWZheTE4Z0RTLTlsTUJZTGlFRg?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776284833,
+      "headline": "S&P 500 closes at fresh record, recovering all losses since start of US-Iran war - Reuters",
+      "id": 7799923,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "S&P 500 closes at fresh record, recovering all losses since start of US-Iran war  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQR2NRdUlXMXp1NDdUYm9Ga0VkSlVjSVVhclU3Q0psVUE4ZDM4M3Y0Y0Zfdlc3OHdyT3NMZ1ZkUEtLaUtaMHZXZFJuc1k0V2VOV0NZSS1jSGdNelZCWHNMTVAxWXRTMnN3bVBreUFWeFFNdFVRcHZnTFBYVlJ6QVd0M2dJRHpfZkpycE0zWndocWNKOVpMTWNWY1hXWTJuMWM?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776284470,
+      "headline": "Iran war puts US companies in wait-and-see mode, Fed report says - Reuters",
+      "id": 7800561,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Iran war puts US companies in wait-and-see mode, Fed report says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQa3Q3WWxuOTczZC1xZEZ1N1FOQ1ZHaWx3bnd4VlNKRlhES3c5ckF6cGdfNFlsTkJfeHZaNjVqNE83RGl5N214X0o0TkVXX3JQbWhJcFdYRG1FM0FQazRYWFJ1QWhlVWJQTjdyRmI0dmM1Q3BOTDBwdlo4WnNDc0NHaFJYYkljNWlLcklGdjV5cmE5MkI4SXhOcGtJX0djWE1zaHdtUzFGMnRLQVVWc2NR?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776282500,
+      "headline": "White House offers no hint of Iran war cost as it seeks military funding surge - Reuters",
+      "id": 7800455,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "White House offers no hint of Iran war cost as it seeks military funding surge  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOOExveDktZzU5ZDdwZ2pTTFhHTzdSUGluYk1rNHBkZHlweUNyNWZfbWlUS0dJVFVNQ1M1Z2ZXdi16SEhOY3JidUlRZUpHTWU0Si1OQTJkNXd2SWR0bDZpNVNWbUNOSjM1cmUyOGxBbmx3cTE5aGR3Q2EzOFk2YmVBaWNUZXI3YzV4SVd4T1NxSmtkb2xtNTYybGJZUTdoci1RQjEyMk9ZS3NXWUF5RWw4SURXMkVYTWwzaHlTenNkYUFPa2lR?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776279295,
+      "headline": "White House denies U.S. requested ceasefire, says new talks may happen in Pakistan - Reuters",
+      "id": 7801191,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "White House denies U.S. requested ceasefire, says new talks may happen in Pakistan  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPTHZJd2Z1eVA2dk1HZE9fMTkwY2N4aGJMbGpmMVZ4YVgyMnRBSXNNSzBZcWtWZ0dXTWgzWEtnSXlRSUV3TDRXUTRJQXdhWDhtclU0X21YQ0NRRVFuaWRKQ3JaNnQ1bVQwUERUcmVkVHN0bnVqQUpYR3V3N0xQQXVhU1ZzdlBFY1lIblpadWJfREZtNGdyd1JFMkhKek4wSk02VEFvZkVjUUxnaUp2eDAta0ZsWmo1cmRONDl3TXctYVpPVDRLVEpZSXU1bw?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776278584,
+      "headline": "For cruise lines, Iran conflict and oil prices threaten to dent profits",
+      "id": 7799920,
+      "image": "https://image.cnbcfm.com/api/v1/image/107433037-1719336964567-gettyimages-2133947792-kona_hawaii_ka_032.jpeg?v=1776268980&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "Even as the industry navigates choppy seas, cruise companies are looking for their next avenues for growth.",
+      "url": "https://www.cnbc.com/2026/04/15/iran-conflict-oil-prices-cruise-lines.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776278280,
+      "headline": "Australia refinery fire worsens fuel supply crunch amid Iran war - Reuters",
+      "id": 7801501,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Australia refinery fire worsens fuel supply crunch amid Iran war  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPSW9lamdrd2RwRHhUb3J1X2RvOUFfWkJwTFdDOTMybWdyRzdxcHFTd1gycTVIX3NOaDYwaGtocHNJMnNmYmZGZWFtb2w5QW91SmliTXgydGx4U1BmYXpwXzhPdmUyN2w0Tm50cWJtQkdjdDNZcXNlN0VURVl2S2hyeEVUT204R2JtSlpYaUo3d2lySS0xelJIaExjNERGT2pKekZ0SzhuaWV5UFdtOC13akZkdjNMVFh2TGNydnFHSnNFZUJYenc?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776277352,
+      "headline": "Bessent says U.S. won't be renewing waivers for Iranian and Russian oil - Reuters",
+      "id": 7801809,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Bessent says U.S. won't be renewing waivers for Iranian and Russian oil  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPeUhfX3VaSllQc3lRS0ppd3ZEYWRLRjhBeXdsTVBPQ2p5ckFYYTdkeUd0TWFTR1hnY2xRY0FjWXVDYjJkSFdEcjh2Z0hMUFpwSzhpeXo0X2FiLWpoQ3BNcVVmYXlHUTYwYTZCTmIyWkdUWkhXU2Y0d0Z4blN3dGt1bTJXUkVMNUZXbXJwZHJnRFh5YmJZWWI2SzhtRjVyX080bkJhUkVtWmdEWVM5SVA0SFRR?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776276180,
+      "headline": "Exclusive: Iran proposes letting ships exit safely through Oman side of Hormuz, source says - Reuters",
+      "id": 7799819,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Exclusive: Iran proposes letting ships exit safely through Oman side of Hormuz, source says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOelhWMXh6eHhoaTFxUEMxS3RGR2lOeTl0MkZWMXJjWWxWaDUyUWlUZVE0WE9pMUozQngyekJNLWlMRTJSVVhPcWNpWmpxeG5SRVRLT3UzUkpfTVFRYmx1d29jQWowUjVrQ05odWpxSmVTY2RKVjNyRjRmZndiZ2NzYjNzNXZsNExWYU14MlNyRHZURXZEWFV1M2ljaG5hTW1uSTk1QndhS0JOekxMSHI0aDZWYVM2YUpaRE9jU1FqZnpza21PcjZSR0RR?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776276176,
+      "headline": "Kremlin says US has rejected its proposal that Russia take Iranian uranium stocks - Reuters",
+      "id": 7799924,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Kremlin says US has rejected its proposal that Russia take Iranian uranium stocks  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQU0ZSZktxQ3pWTTZCaUs1dWlvNDBaVm1uYXdvYjlWVnZERFRHY2dBX01sVGg5RVZRMktwZFpOelcxY2lPRkZpa0I1VnVlRVdsd2lRMmZxQlBySUFTVjZJVGNTa0Q0RTRwZmJsLTZjOUlrLUFEMlg3c00xX3RuSGdLTE93cUZQdGFTNXVFSnFITjFFeXBBeVlGV2kzcXNmUDVmSEt4bWVJYlFFR1hBYXVZRWZzMnBJS0NDQmhsVDlGdlNMbkg0bVZN?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776275722,
+      "headline": "US may impose secondary sanctions on Iran oil purchases - Reuters",
+      "id": 7800977,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US may impose secondary sanctions on Iran oil purchases  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNUkFpb05jTnFxcFdfV0ktRlVTTS01SHdnSE81VnN0OWxBbXBKYzZHcjVFSVVIcGZPNmlnc0xySTM2S2NNNEV2V2pVWWUxYkxDcU5TdnlEdVlWMmJ3aDBkemlfa0x5akRyMkFZVXdkQXE0TkNWSGJOSWpRRnJGZ2JyTFJEVnpNcmQwUno2NHN1WThRSkd5NTNoUkEzbWJfTWlkZjV4X01JRQ?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776274725,
+      "headline": "Pakistan weighs spot LNG as Iran war hits supply, ramps up domestic oil and gas - Reuters",
+      "id": 7800456,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Pakistan weighs spot LNG as Iran war hits supply, ramps up domestic oil and gas  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPUndXM0JiYkVMbS1WaTRUQi1vVkZsSi1pRlZ3ZUh4QnlGMDl3YjZ4NVczWUxCOTNObXJQS0pVNXk5VGhkbHFDcTBlVnhqUkU5TXFWMS1LZlZGVjk3QU5ZcFh2bHVzMXVCUjUzRUQ1b25sRmZvLTZ1VmxONWhhaGNhZ042TFVCMHVzd3VvZldaUFZ2eXhKemFwaTEzMklaYUMyVHU2cl9GZi0xanhvM0s0QUs2ckdiLXlBbFRuMEZ3b3I?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776272674,
+      "headline": "Iran can go up to two months without oil exports before cutting output, analysts say - Reuters",
+      "id": 7800135,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Iran can go up to two months without oil exports before cutting output, analysts say  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQQnhPTDc2bkJPaXBGQ1VJb0JycWE0VzJSOTNERnlaYmtmbjBkZldRR1RWSW9ockdCUnl3UFptZWxRLTlReGl6cjJFQUZNWU4xZXlyVVRTenJFMGFGNVpVQ3ZmMkV3RXFfeU5ZakZjbU9OcmRBYnR1TWtFd2RKT01JTENERkhJOERyYlktVDN1bWdoT3dqTUtHd21OSW9vUzNNVGhJVXIzbmVJckRFUGFqY2NIaUVKdkZBQ2oyRDBiYzQyM2lwNExhaG5tRkk?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776269967,
+      "headline": "US import prices increase below expectations; sharp rise anticipated due to Iran war - Reuters",
+      "id": 7799925,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US import prices increase below expectations; sharp rise anticipated due to Iran war  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSXY4M2hFTFh4SS1kbGMyTUhuM3JZLWJQbTdkemlkNHVvOXA1QWYyRmh6V0NLcTRZWURPV213Wl9zalhhV01wRnBQZ0Rsa1pfY2kza1pCZTNRdDFTekJsVGZST0tJWTYwRkg0U01oTUJ2aWswLS14X0FOVV9pMWVTa1N5U3UtUW1USGlBdE00N0xvNTZHMUE1aXVaZV9Ndw?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776268816,
+      "headline": "Trump says he asked China's Xi not to give Iran weapons - Reuters",
+      "id": 7798276,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Trump says he asked China's Xi not to give Iran weapons  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNaW8yRzRpZkFGTlN6aXpzUEFONndwLVVhNHhubTJBMmZ5aWxfbUoxVm11Rkw0ZjA0enRBempXdFhKX3BTTUVhb1FuV29VclNRSHBlbF82WmJSREc3RjM0aW9DQlBNa1RBY2JsSkVheWFkZUR1VUo3Z1pReGxXYlM2SmdfSlBYbkpHWTdXa1ZkcUo2ZUpuRjVRM1JNMXhweFdM?oc=5"
+    }
+  ]
 }

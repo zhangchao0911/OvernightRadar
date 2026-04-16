@@ -1,0 +1,38 @@
+{
+  "date": "2026-04-16",
+  "generated_at": "2026-04-16T14:44:45.689645",
+  "total": 1,
+  "metadata": {
+    "news_count": 20,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 1,
+    "avg_score": 44.8,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "航空及航运业面临成本压力与需求风险",
+      "direction": "利空",
+      "sectors": [
+        "航空",
+        "航运",
+        "邮轮"
+      ],
+      "action": "规避Spirit Airlines（SAVE）等脆弱航空公司；对邮轮股（CCL, RCL）及航空股（JETS）采取观望或逢高减仓策略，等待冲突缓和或油价回落信号。",
+      "reason": "新闻2、11明确指出航空燃油成本飙升威胁航空公司（SAVE可能清算）及邮轮公司利润。美伊冲突（8）导致企业进入“观望模式”，可能抑制商务及休闲旅行需求，对相关板块构成双重打击。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}
