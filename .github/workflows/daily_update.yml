@@ -23,7 +23,7 @@ jobs:
       - name: Clean today's stale data
         run: |
           TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
-          rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json
+          rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json data/cn_watchlist/${TODAY}.json
           echo "Cleaned stale data for ${TODAY}"
 
       # ─── 步骤 1: 获取新闻数据 ───
@@ -62,7 +62,7 @@ jobs:
 
       # ─── 步骤 6.5: 获取 A 股市场观察数据 ───
       - name: Fetch CN watchlist
-        run: python scripts/fetch_cn_watchlist.py
+        run: python scripts/fetch_cn_watchlist.py --force
 
       # ─── 步骤 7: 提交数据更改 ───
       - name: Commit and push

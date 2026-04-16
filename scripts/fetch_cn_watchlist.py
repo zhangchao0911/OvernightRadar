@@ -353,6 +353,19 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = F
         return None
 
     try:
+        # 0. 提前检查文件是否已存在（避免浪费 API 调用）
+        output_dir_resolved = os.path.abspath(output_dir)
+        date_str = datetime.now().strftime("%Y-%m-%d")
+        if benchmark_key == DEFAULT_BENCHMARK:
+            filename = f"{date_str}.json"
+        else:
+            filename = f"{date_str}_{benchmark_key}.json"
+        output_path = os.path.join(output_dir_resolved, filename)
+
+        if os.path.exists(output_path) and not force:
+            print(f"SKIP: {output_path} already exists (use --force to overwrite)")
+            return None
+
         # 1. 获取基准指数历史
         print(f"基准指数: {BENCHMARKS[benchmark_key]['name']}")
         benchmark_close = fetch_benchmark_history(benchmark_key)
@@ -393,15 +406,6 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = F
 
         # 5. 写入文件
         os.makedirs(output_dir, exist_ok=True)
-        if benchmark_key == DEFAULT_BENCHMARK:
-            filename = f"{output['date']}.json"
-        else:
-            filename = f"{output['date']}_{benchmark_key}.json"
-        output_path = os.path.join(output_dir, filename)
-
-        if os.path.exists(output_path) and not force:
-            print(f"SKIP: {output_path} already exists")
-            return None
 
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
