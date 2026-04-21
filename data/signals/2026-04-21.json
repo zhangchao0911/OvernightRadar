@@ -1,0 +1,58 @@
+{
+  "date": "2026-04-21",
+  "generated_at": "2026-04-21T01:57:59.905685",
+  "total": 2,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 48.5,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "地缘风险延缓美联储降息预期",
+      "direction": "利空",
+      "sectors": [
+        "银行",
+        "利率敏感型板块（房地产、公用事业）"
+      ],
+      "action": "银行股（如WFC）若因利率维持高位预期而走强，可短线参与；对利率敏感的板块（XLRE、XLU）宜规避或减仓。",
+      "reason": "新闻9中Wells Fargo CEO警告在伊朗冲突结束前降息是错误，强化了地缘政治可能推迟美联储宽松政策的逻辑，利好银行净息差，利空高股息等利率敏感板块。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 55,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 10
+      }
+    },
+    {
+      "title": "美伊和谈预期反复引发油价与市场波动",
+      "direction": "利空",
+      "sectors": [
+        "航空",
+        "消费零售"
+      ],
+      "action": "航空股（如JBLU）若因燃料成本担忧大幅下跌，可谨慎抄底；零售股（尤其是依赖亚洲供应链的）宜观望，等待成本压力明朗。",
+      "reason": "新闻1、4、11、13显示和谈消息反复导致油价波动，直接影响航空业成本（新闻5）及通过供应链影响消费价格（新闻7），增加相关板块不确定性。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    }
+  ]
+}
