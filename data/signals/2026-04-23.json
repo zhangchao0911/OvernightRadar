@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-23",
+  "generated_at": "2026-04-23T02:00:39.955410",
+  "total": 1,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 1,
+    "avg_score": 46.5,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "伊朗局势紧张推高能源与运输成本",
+      "direction": "利空",
+      "sectors": [
+        "航空",
+        "航运",
+        "工业",
+        "欧洲股市"
+      ],
+      "action": "关注航空股（如Spirit）及依赖亚欧航线的航运股，若因救援消息反弹，可视为短期卖点；同时关注能源成本上升对欧洲工业股（如德国DAX成分股）的持续压力。",
+      "reason": "新闻2、5、11、12、18、19、20显示，尽管有停火延期，但霍尔木兹海峡航运受阻、油轮被拦截、燃料短缺风险上升，直接推高航空燃油和运输成本。德国已因此下调增长预期，欧盟寻求控制航油。这将对全球供应链、企业成本和通胀前景构成持续压力，利空相关板块。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 60,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}
