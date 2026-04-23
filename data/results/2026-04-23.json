@@ -38,17 +38,17 @@
         {
           "name": "兆易创新",
           "code": "603986",
-          "change_pct": 0.0
+          "change_pct": -2.92
         },
         {
           "name": "北京君正",
           "code": "300223",
-          "change_pct": -1.13
+          "change_pct": -3.67
         },
         {
           "name": "东芯股份",
           "code": "688110",
-          "change_pct": -1.33
+          "change_pct": -3.0
         }
       ]
     },
@@ -76,17 +76,17 @@
         {
           "name": "中际旭创",
           "code": "300308",
-          "change_pct": 1.49
+          "change_pct": 1.17
         },
         {
           "name": "北方华创",
           "code": "002371",
-          "change_pct": 0.22
+          "change_pct": -0.62
         },
         {
           "name": "中微公司",
           "code": "688012",
-          "change_pct": -0.8
+          "change_pct": -1.54
         }
       ]
     },
@@ -114,17 +114,17 @@
         {
           "name": "立讯精密",
           "code": "002475",
-          "change_pct": 0.98
+          "change_pct": -0.38
         },
         {
           "name": "歌尔股份",
           "code": "002241",
-          "change_pct": -1.49
+          "change_pct": -2.09
         },
         {
           "name": "京东方A",
           "code": "000725",
-          "change_pct": -0.7
+          "change_pct": -1.87
         }
       ]
     },
@@ -152,17 +152,17 @@
         {
           "name": "寒武纪",
           "code": "688256",
-          "change_pct": -0.1
+          "change_pct": -1.05
         },
         {
           "name": "海光信息",
           "code": "688041",
-          "change_pct": 2.14
+          "change_pct": 1.62
         },
         {
           "name": "浪潮信息",
           "code": "000977",
-          "change_pct": -0.39
+          "change_pct": -0.5
         }
       ]
     },
@@ -190,17 +190,17 @@
         {
           "name": "拓斯达",
           "code": "300607",
-          "change_pct": 9.28
+          "change_pct": 6.94
         },
         {
           "name": "绿的谐波",
           "code": "688017",
-          "change_pct": -5.79
+          "change_pct": -7.37
         },
         {
           "name": "埃斯顿",
           "code": "002747",
-          "change_pct": -0.71
+          "change_pct": -1.46
         }
       ]
     },
@@ -228,17 +228,17 @@
         {
           "name": "山东黄金",
           "code": "600547",
-          "change_pct": -3.03
+          "change_pct": -3.79
         },
         {
           "name": "紫金矿业",
           "code": "601899",
-          "change_pct": -2.48
+          "change_pct": -3.18
         },
         {
           "name": "中金黄金",
           "code": "600489",
-          "change_pct": -3.42
+          "change_pct": -5.04
         }
       ]
     },
@@ -266,17 +266,17 @@
         {
           "name": "中国卫星",
           "code": "600118",
-          "change_pct": 5.47
+          "change_pct": 4.53
         },
         {
           "name": "航天电器",
           "code": "002025",
-          "change_pct": -2.04
+          "change_pct": -3.73
         },
         {
           "name": "中科星图",
           "code": "688568",
-          "change_pct": -0.53
+          "change_pct": -2.51
         }
       ]
     },
@@ -304,20 +304,20 @@
         {
           "name": "宁德时代",
           "code": "300750",
-          "change_pct": 0.23
+          "change_pct": 0.58
         },
         {
           "name": "拓普集团",
           "code": "601689",
-          "change_pct": -2.65
+          "change_pct": -2.85
         },
         {
           "name": "比亚迪",
           "code": "002594",
-          "change_pct": -1.97
+          "change_pct": -1.61
         }
       ]
     }
   ],
-  "updated_at": "2026-04-23T10:04:01+08:00"
+  "updated_at": "2026-04-23T17:15:29+08:00"
 }
