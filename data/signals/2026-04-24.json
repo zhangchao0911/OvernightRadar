@@ -1,0 +1,58 @@
+{
+  "date": "2026-04-24",
+  "generated_at": "2026-04-24T02:00:30.632759",
+  "total": 2,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 49.8,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "大麻股政策利好，短期交易机会",
+      "direction": "利多",
+      "sectors": [
+        "大麻",
+        "制药"
+      ],
+      "action": "若开盘涨幅<5%可轻仓参与，若高开>10%不追，等待回调",
+      "reason": "特朗普政府将大麻从Schedule I重新分类，监管松绑预期推动板块情绪，但政策落地需时间，适合短线博弈。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 63,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "伊朗冲突升级推高油价，能源板块受益",
+      "direction": "利多",
+      "sectors": [
+        "能源",
+        "石油天然气"
+      ],
+      "action": "若能源股开盘涨幅<1%可买入，若高开>3%不追，等待回调",
+      "reason": "新闻显示伊朗战争持续，霍尔木兹海峡威胁加剧，美国石油高管预期产量上升，油价上涨压力明显，能源股短期受益于地缘溢价。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    }
+  ]
+}
