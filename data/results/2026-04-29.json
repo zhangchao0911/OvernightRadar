@@ -38,17 +38,17 @@
         {
           "name": "兆易创新",
           "code": "603986",
-          "change_pct": null
+          "change_pct": 0.45
         },
         {
           "name": "北京君正",
           "code": "300223",
-          "change_pct": null
+          "change_pct": 1.05
         },
         {
           "name": "东芯股份",
           "code": "688110",
-          "change_pct": null
+          "change_pct": 2.39
         }
       ]
     },
@@ -76,12 +76,12 @@
         {
           "name": "拓斯达",
           "code": "300607",
-          "change_pct": null
+          "change_pct": 0.46
         },
         {
           "name": "绿的谐波",
           "code": "688017",
-          "change_pct": null
+          "change_pct": 3.54
         },
         {
           "name": "埃斯顿",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-29T10:14:24+08:00"
+  "updated_at": "2026-04-29T17:35:27+08:00"
 }
