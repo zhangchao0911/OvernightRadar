@@ -38,17 +38,17 @@
         {
           "name": "宁德时代",
           "code": "300750",
-          "change_pct": null
+          "change_pct": -2.02
         },
         {
           "name": "拓普集团",
           "code": "601689",
-          "change_pct": null
+          "change_pct": 4.45
         },
         {
           "name": "比亚迪",
           "code": "002594",
-          "change_pct": null
+          "change_pct": -2.3
         }
       ]
     },
@@ -76,7 +76,7 @@
         {
           "name": "中际旭创",
           "code": "300308",
-          "change_pct": null
+          "change_pct": 1.48
         },
         {
           "name": "北方华创",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-30T10:14:59+08:00"
+  "updated_at": "2026-04-30T17:35:31+08:00"
 }
