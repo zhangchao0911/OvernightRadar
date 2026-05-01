@@ -1,0 +1,100 @@
+{
+  "date": "2026-05-01",
+  "generated_at": "2026-05-01T02:28:00.413982",
+  "total": 4,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 5,
+    "processed_count": 5,
+    "final_count": 4,
+    "avg_score": 54.4,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "Rivian DOE贷款重组与产能调整",
+      "direction": "利多",
+      "sectors": [
+        "电动汽车",
+        "新能源"
+      ],
+      "action": "若股价低开可轻仓试多，高开超5%不追，等待产能计划细节公布",
+      "reason": "Rivian将DOE贷款从原计划下调至45亿美元并调整乔治亚工厂产能，显示公司更务实控制资本支出，降低财务风险，同时受益于伊朗战争加速清洁能源转型的政策预期。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 63,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "伊朗战争冲击全球供应链与央行政策",
+      "direction": "利空",
+      "sectors": [
+        "农业",
+        "新兴市场"
+      ],
+      "action": "回避大米相关农业股和印度卢比资产，关注印度央行干预后卢比企稳信号",
+      "reason": "伊朗战争叠加厄尔尼诺威胁全球大米供应，印度央行外汇远期头寸膨胀至超1000亿美元以应对卢比贬值，新兴市场压力增大，农业板块成本上升。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 55,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 10
+      }
+    },
+    {
+      "title": "特朗普威胁从意大利和西班牙撤军",
+      "direction": "利空",
+      "sectors": [
+        "国防军工",
+        "欧洲市场"
+      ],
+      "action": "短期回避欧洲国防股，关注北约反应及美军部署调整对军工订单的潜在影响",
+      "reason": "特朗普暗示可能从意大利和西班牙撤军，增加北约内部不确定性，欧洲国防股承压，但美国本土军工企业可能因重新部署获得新订单，需观察后续政策。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 55,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 10
+      }
+    },
+    {
+      "title": "Blue Owl因SpaceX贷款收益大涨",
+      "direction": "利多",
+      "sectors": [
+        "私人信贷",
+        "太空"
+      ],
+      "action": "若股价回调至20日均线附近可介入，追高需谨慎，关注SpaceX IPO进展",
+      "reason": "Blue Owl披露从SpaceX贷款中获得10倍回报，且SpaceX即将进行创纪录IPO，提振私人信贷板块情绪，但短期涨幅已大需等待回调机会。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    }
+  ]
+}
