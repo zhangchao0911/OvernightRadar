@@ -1,0 +1,80 @@
+{
+  "date": "2026-05-07",
+  "generated_at": "2026-05-07T02:10:39.138260",
+  "total": 3,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 3,
+    "avg_score": 53.8,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "AMD业绩推动AI板块创新高",
+      "direction": "利多",
+      "sectors": [
+        "半导体",
+        "人工智能"
+      ],
+      "action": "若AMD高开<3%可追多，NVDA、AVGO等AI龙头若回调至20日均线附近可加仓",
+      "reason": "AMD财报超预期引发AI股票集体上涨，标普500和纳指创新高，AI产业链需求强劲，短期动能充足，但需注意追高风险，建议逢回调介入。",
+      "is_macro": false,
+      "under_priced": true,
+      "clear_action": true,
+      "score": 70,
+      "level": "强",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 22,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "Snap发布谨慎指引并结束Perplexity合作",
+      "direction": "利空",
+      "sectors": [
+        "社交媒体",
+        "数字广告"
+      ],
+      "action": "若SNAP低开超5%不抄底，可考虑做空META、PINS等同行，因行业需求不确定性增加",
+      "reason": "Snap财报指引谨慎，因Perplexity合作终止及中东地缘政治不确定性，显示数字广告市场面临逆风，可能拖累整个板块。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "美伊谈判进展与中东局势缓和",
+      "direction": "利多",
+      "sectors": [
+        "航空",
+        "石油",
+        "航运"
+      ],
+      "action": "若航空股（如AAL、DAL）低开可轻仓试多，石油股（如XOM、CVX）高开超2%不追，航运股（如MATX）观望",
+      "reason": "特朗普称与伊朗谈判良好，欧洲股市因伊朗协议乐观情绪大涨超2%，中东局势缓和预期将降低油价和航运风险，利好航空燃油成本下降及全球贸易恢复，但需警惕谈判反复风险。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 51,
+      "level": "中",
+      "score_detail": {
+        "importance": 8,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    }
+  ]
+}
