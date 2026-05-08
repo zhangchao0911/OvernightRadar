@@ -1,0 +1,81 @@
+{
+  "date": "2026-05-08",
+  "generated_at": "2026-05-08T02:27:24.352931",
+  "total": 3,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 5,
+    "processed_count": 5,
+    "final_count": 3,
+    "avg_score": 53.2,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "美伊冲突升级推高油价与地缘风险",
+      "direction": "利空",
+      "sectors": [
+        "能源",
+        "航空",
+        "航运",
+        "消费"
+      ],
+      "action": "若能源股高开>3%不追，可考虑做多原油期货或ETF（如USO）；航空、消费股若低开>2%可轻仓做空或规避",
+      "reason": "美伊相互报复性打击、霍尔木兹海峡受威胁，IEA警告能源市场进入‘困境’，油价短期暴涨将推高通胀预期，压制航空、消费等成本敏感板块，同时避险情绪升温可能拖累大盘。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 68,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "Arm股价大跌后CEO释放信心信号",
+      "direction": "利多",
+      "sectors": [
+        "半导体",
+        "AI芯片"
+      ],
+      "action": "若ARM低开>5%可轻仓试探性买入，设止损于前低下方3%",
+      "reason": "Arm CEO明确表示有能力确保额外供应，试图纠正市场对财报后的过度悲观，短期超卖后存在修复预期，但需警惕地缘风险对科技股的压制。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "麦当劳警告伊朗战争推高成本并抑制需求",
+      "direction": "利空",
+      "sectors": [
+        "餐饮",
+        "消费"
+      ],
+      "action": "若MCD低开>2%可轻仓做空或减仓，关注成本端压力是否扩散至其他餐饮股",
+      "reason": "麦当劳明确表示伊朗战争导致成本上升将损害长期需求，叠加其中国扩张计划面临不确定性，消费板块整体承压。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    }
+  ]
+}
