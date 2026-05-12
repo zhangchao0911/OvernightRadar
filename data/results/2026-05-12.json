@@ -38,17 +38,17 @@
         {
           "name": "兆易创新",
           "code": "603986",
-          "change_pct": -2.03
+          "change_pct": -2.37
         },
         {
           "name": "北京君正",
           "code": "300223",
-          "change_pct": null
+          "change_pct": 0.51
         },
         {
           "name": "东芯股份",
           "code": "688110",
-          "change_pct": null
+          "change_pct": -6.19
         }
       ]
     },
@@ -76,7 +76,7 @@
         {
           "name": "中国卫星",
           "code": "600118",
-          "change_pct": -3.11
+          "change_pct": -3.83
         },
         {
           "name": "航天电器",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-05-12T10:26:52+08:00"
+  "updated_at": "2026-05-12T18:05:35+08:00"
 }
