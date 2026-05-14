@@ -1,0 +1,100 @@
+{
+  "date": "2026-05-14",
+  "generated_at": "2026-05-14T02:32:57.051522",
+  "total": 4,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 4,
+    "avg_score": 65.2,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "美债收益率创新高，通胀预期升温",
+      "direction": "利空",
+      "sectors": [
+        "科技成长股",
+        "房地产"
+      ],
+      "action": "若10年期收益率继续上行突破4.8%，减仓高估值科技成长股，增持能源与防御性板块",
+      "reason": "PPI数据超预期推动10年期美债收益率创年内新高，市场重新定价降息预期，高估值成长股承压，通胀敏感板块受益",
+      "is_macro": true,
+      "under_priced": true,
+      "clear_action": true,
+      "score": 80,
+      "level": "强",
+      "score_detail": {
+        "importance": 25,
+        "reach": 15,
+        "pricing": 22,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "伊朗局势升级引发能源与通胀风险",
+      "direction": "利空",
+      "sectors": [
+        "能源",
+        "航空",
+        "消费品"
+      ],
+      "action": "若原油期货开盘跳涨超3%，不追多；可关注能源股回调后低吸机会，同时规避航空与啤酒等消费股",
+      "reason": "多篇新闻显示美中伊三方博弈加剧，伊朗战争风险推高油价，ECB警告可能加息，同时美国啤酒需求因油价上涨而下滑，显示通胀压力与消费萎缩并存",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 68,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "Cisco业绩超预期，AI概念获认可",
+      "direction": "利多",
+      "sectors": [
+        "科技",
+        "网络设备"
+      ],
+      "action": "若CSCO开盘高开不超过5%，可轻仓追入；若高开超5%则等待回调至5日均线附近再介入",
+      "reason": "Cisco财报超预期且AI故事开始被华尔街认可，股价创历史新高，表明企业网络设备需求受益于AI基础设施建设",
+      "is_macro": false,
+      "under_priced": true,
+      "clear_action": true,
+      "score": 63,
+      "level": "中",
+      "score_detail": {
+        "importance": 8,
+        "reach": 15,
+        "pricing": 22,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "J&J获机构上调评级，防御属性凸显",
+      "direction": "利多",
+      "sectors": [
+        "医疗保健"
+      ],
+      "action": "若JNJ股价回调至20日均线附近，可分批建仓作为防御性配置",
+      "reason": "在AI炒作主导的市场中，J&J获Leerink上调至买入评级，估值偏低且业务稳定，适合作为通胀与地缘风险下的避险选择",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 10,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}
